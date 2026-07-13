@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>The Kings Take Asia ✈️ Dec 2026 – Jan 2027</title>
+
+  <!-- Private trip site: keep out of search engines -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="description" content="King family trip itinerary — Japan & Philippines, Dec 2026–Jan 2027.">
+
+  <meta name="theme-color" content="#ff5d8a">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Asia Trip">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="nav" id="top">
+    <div class="nav-inner">
+      <a class="brand" href="#top">👑 <span>Kings&nbsp;Take&nbsp;Asia</span></a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#route">🗺️ Route</a>
+        <a href="#timeline">🗓️ Day&nbsp;by&nbsp;Day</a>
+        <a href="#flights">✈️ Flights</a>
+        <a href="#hotels">🏨 Stays</a>
+        <a href="#todo">✅ To-Do <span class="todo-count" id="todoCount"></span></a>
+        <a href="#info">📇 Info</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-decor" aria-hidden="true">
+        <span class="cloud c1"></span><span class="cloud c2"></span><span class="cloud c3"></span>
+        <span class="hero-plane">✈️</span>
+        <span class="hero-sun"></span>
+      </div>
+      <div class="hero-inner">
+        <p class="hero-kicker" id="heroDates">Dec 30, 2026 – Jan 17, 2027</p>
+        <h1 id="heroTitle">The Kings Take Asia</h1>
+        <p class="hero-sub" id="heroSub">Seattle → Japan → Philippines → home again</p>
+
+        <div class="travelers" id="travelers"></div>
+
+        <div class="countdown" id="countdown" aria-live="polite"></div>
+
+        <div class="hero-stats" id="heroStats"></div>
+
+        <div class="hero-actions">
+          <a class="btn btn-light" href="#timeline">See the plan 🗓️</a>
+          <button class="btn btn-ghost" id="shareBtn">Share 📤</button>
+        </div>
+      </div>
+      <div class="hero-wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0,50 C240,95 480,0 720,35 C960,70 1200,15 1440,55 L1440,90 L0,90 Z" fill="var(--bg)"/></svg>
+      </div>
+    </section>
+
+    <!-- booking progress card overlapping the hero -->
+    <div class="wrap">
+      <div class="progress-card reveal" id="progressCard"></div>
+    </div>
+
+    <!-- ============ ROUTE MAP ============ -->
+    <section class="wrap" id="route">
+      <h2 class="section-title"><span>🗺️</span> The Route</h2>
+      <p class="section-sub">One lap around the Pacific. Tap a stop to jump to that part of the trip.</p>
+      <div class="map-card reveal">
+        <div class="map-scroll" id="routeMap"></div>
+        <div class="map-legend">
+          <span class="lg"><i class="dot dot-ok"></i> Booked</span>
+          <span class="lg"><i class="dot dot-bad"></i> Not booked yet!</span>
+          <span class="lg"><i class="dot dot-ground"></i> Ground travel</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TIMELINE ============ -->
+    <section class="wrap" id="timeline">
+      <h2 class="section-title"><span>🗓️</span> Day by Day</h2>
+      <p class="section-sub">The whole adventure in order — flights, hotels, and the fun in between.</p>
+      <div class="filters" id="filters" role="group" aria-label="Filter timeline">
+        <button class="chip" data-filter="all" aria-pressed="true">Everything</button>
+        <button class="chip" data-filter="flight" aria-pressed="false">✈️ Flights</button>
+        <button class="chip" data-filter="hotel" aria-pressed="false">🏨 Stays</button>
+        <button class="chip chip-alert" data-filter="needed" aria-pressed="false">⚠️ Needs booking</button>
+      </div>
+      <div id="timelineList"></div>
+    </section>
+
+    <!-- ============ FLIGHTS ============ -->
+    <section class="wrap" id="flights">
+      <h2 class="section-title"><span>✈️</span> Flights</h2>
+      <p class="section-sub">Tap any code to copy it — handy at the check-in counter.</p>
+      <div class="card-grid" id="flightCards"></div>
+    </section>
+
+    <!-- ============ HOTELS ============ -->
+    <section class="wrap" id="hotels">
+      <h2 class="section-title"><span>🏨</span> Stays</h2>
+      <p class="section-sub">Addresses open in Google Maps. Codes copy with a tap.</p>
+      <div class="card-grid" id="hotelCards"></div>
+    </section>
+
+    <!-- ============ TO-DO ============ -->
+    <section class="wrap" id="todo">
+      <h2 class="section-title"><span>✅</span> Still To Book &amp; Verify</h2>
+      <p class="section-sub" id="todoSub"></p>
+      <div id="todoList"></div>
+    </section>
+
+    <!-- ============ QUICK REFERENCE ============ -->
+    <section class="wrap" id="info">
+      <h2 class="section-title"><span>📇</span> Quick Reference</h2>
+      <p class="section-sub">Every confirmation code and address in one scannable place.</p>
+      <div id="quickRef"></div>
+
+      <h2 class="section-title mt"><span>💡</span> Good to Know</h2>
+      <div class="know-grid" id="goodToKnow"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p><strong>🔒 Family &amp; friends only.</strong> This page is unlisted and hidden from search engines.</p>
+    <p>📱 On your phone: <em>Share → Add to Home Screen</em> — the itinerary then works offline, even mid-flight.</p>
+    <p class="footer-heart">Made with ❤️ for the King family world tour · Update <code>data.js</code> to edit this site</p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
