@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-trip="t2018">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Europe 2018 · Emerald &amp; Adriatic 👑</title>
+
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="description" content="King family trip archive — Europe 2018.">
+
+  <meta name="theme-color" content="#0f9d6b">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap">
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/past.css">
+</head>
+<body>
+
+  <header class="nav" id="top">
+    <div class="nav-inner">
+      <a class="brand" href="/">👑 <span>King&nbsp;Family&nbsp;Trips</span></a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#route">🗺️ Route</a>
+        <a href="#timeline">🗓️ The Story</a>
+        <a href="#achievements">🏆 Achievements</a>
+        <span id="levelLinks" style="display:contents"></span>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-decor" aria-hidden="true">
+        <span class="cloud c1"></span><span class="cloud c2"></span><span class="cloud c3"></span>
+        <span class="hero-plane">✈️</span>
+        <span class="hero-sun"></span>
+      </div>
+      <div class="hero-inner">
+        <div class="level-chip" id="levelChip"></div>
+        <h1 id="heroTitle"></h1>
+        <p class="hero-sub" id="heroSub"></p>
+        <p class="hero-kicker" id="heroDates"></p>
+        <div class="travelers" id="travelers"></div>
+        <div class="stamp" id="stamp"></div>
+        <div class="hero-stats" id="heroStats"></div>
+        <div class="hero-actions">
+          <a class="btn btn-light" href="#timeline">Relive it 🗓️</a>
+          <a class="btn btn-ghost" href="/">Current adventure 🌏</a>
+        </div>
+      </div>
+      <div class="hero-wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0,50 C240,95 480,0 720,35 C960,70 1200,15 1440,55 L1440,90 L0,90 Z" fill="var(--bg)"/></svg>
+      </div>
+    </section>
+
+    <section class="wrap" id="route">
+      <h2 class="section-title"><span>🗺️</span> The Route</h2>
+      <p class="section-sub">Every stop on this level, in order.</p>
+      <div class="map-card reveal">
+        <div class="map-scroll" id="routeMap"></div>
+        <div class="map-legend">
+          <span class="lg"><i class="dot" style="background:var(--accent)"></i> Flights</span>
+          <span class="lg"><i class="dot dot-ground"></i> Rails, roads &amp; ferries</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" id="timeline">
+      <h2 class="section-title"><span>🗓️</span> How It Went Down</h2>
+      <p class="section-sub">The day-by-day story, straight from the trip binder.</p>
+      <div id="timelineList"></div>
+    </section>
+
+    <section class="wrap" id="achievements">
+      <h2 class="section-title"><span>🏆</span> Achievements Unlocked</h2>
+      <p class="section-sub">The trophies this level awarded.</p>
+      <div class="ach-grid" id="achGrid"></div>
+    </section>
+
+    <section class="wrap" id="capsule">
+      <h2 class="section-title"><span>📼</span> Time Capsule</h2>
+      <p class="section-sub">Period details that make this trip a historical artifact.</p>
+      <div class="know-grid" id="capsuleGrid"></div>
+    </section>
+
+    <section class="wrap" id="levels">
+      <h2 class="section-title"><span>🕹️</span> Level Select</h2>
+      <p class="section-sub">Jump to another King family adventure.</p>
+      <div class="level-grid" id="levelGrid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p><strong>🔒 Family &amp; friends only.</strong> This page is unlisted and hidden from search engines.</p>
+    <p><a class="back-cta" href="/">⬅ Back to the current adventure</a></p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/levels.js"></script>
+  <script src="data.js"></script>
+  <script src="/past.js"></script>
+</body>
+</html>

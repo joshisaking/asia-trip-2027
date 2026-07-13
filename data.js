@@ -27,12 +27,12 @@ const TRIP_DATA = {
 
   meta: {
     title: "The Kings Take Asia",
-    subtitle: "Seattle → Japan → Philippines → home again",
+    subtitle: "Atlanta → Seattle → Japan → Philippines → home again",
     dateRange: "Dec 30, 2026 – Jan 17, 2027",
     // Exact moment of departure (Seattle time) — powers the countdown.
     departureISO: "2026-12-30T11:50:00-08:00",
-    // Rough end of trip (evening of the day they land back in the US, Seattle time).
-    tripEndISO: "2027-01-18T00:00:00-08:00",
+    // Rough end of trip (evening of the day they land back home, Atlanta/Eastern time).
+    tripEndISO: "2027-01-18T00:00:00-05:00",
     tripDays: 19,
     travelers: [
       { name: "Joshua King",    emoji: "👨" },
@@ -52,6 +52,15 @@ const TRIP_DATA = {
      PHASES — the "chapters" of the trip. Used for timeline headers & colors.
      ========================================================================== */
   phases: [
+    {
+      id: "prelude",
+      emoji: "🧳",
+      name: "Getting to the Starting Line",
+      dates: "Before Dec 30",
+      tagline: "Home base (Atlanta) → Seattle, to link up with the big international flight.",
+      weather: "",
+      funFact: "Atlanta is home base for the King family — this repositioning flight gets everyone to Seattle in time for JL67's 11:50 AM departure on Dec 30."
+    },
     {
       id: "wheelsup",
       emoji: "🛫",
@@ -96,18 +105,18 @@ const TRIP_DATA = {
       emoji: "❓",
       name: "Back to Japan — Final Stretch",
       dates: "Jan 14 – 17 · 3 nights",
-      tagline: "Return to Japan for the last few days — details TBD.",
+      tagline: "Return to Japan for the last few days — lodging still needs to be booked.",
       weather: "",
-      funFact: "Where these 3 nights are spent is still open — the Chase Travel booking (Trip #1018055048) may cover it. Tokyo? DisneySea? To be decided…"
+      funFact: "Nowhere to sleep yet for these 3 nights — top priority on the to-do list! Tokyo? Somewhere near Haneda for an easy departure? Time to decide and book."
     },
     {
       id: "homeward",
       emoji: "🏠",
       name: "Homeward",
       dates: "Jan 17",
-      tagline: "Tokyo → Atlanta → Seattle.",
+      tagline: "Tokyo → Atlanta. Home sweet home.",
       weather: "",
-      funFact: "DL294 departs Tokyo at 4:25 PM and lands in Atlanta at 2:50 PM the same day — you touch down 95 minutes before you took off. Time travel, courtesy of the date line."
+      funFact: "DL294 departs Tokyo at 4:25 PM and lands in Atlanta at 2:50 PM the same day — you touch down 95 minutes before you took off. Time travel, courtesy of the date line. Welcome home!"
     }
   ],
 
@@ -115,6 +124,21 @@ const TRIP_DATA = {
      FLIGHTS — one entry per flight LEG (even if booked as two reservations).
      ========================================================================== */
   flights: [
+    {
+      id: "atl-sea",
+      status: "needed",
+      phase: "prelude",
+      from: { code: "ATL", city: "Atlanta (home)" },
+      to:   { code: "SEA", city: "Seattle" },
+      airline: "Alaska Airlines (planned)",
+      flightNo: "—",
+      cabin: "—",
+      depart: { date: "On/before Tue, Dec 29–30, 2026", time: "TBD", tz: "Atlanta" },
+      arrive: { date: "TBD", time: "TBD", tz: "Seattle" },
+      duration: "≈ 5h 45m",
+      note: "The very first leg of the trip — gets the family from home base to Seattle in time to connect with JL67's 11:50 AM departure on Dec 30. An evening-before arrival (Dec 29) is the safest bet. Book this!",
+      reservations: []
+    },
     {
       id: "sea-nrt",
       status: "confirmed",
@@ -185,7 +209,7 @@ const TRIP_DATA = {
       status: "confirmed",
       phase: "homeward",
       from: { code: "HND", city: "Tokyo Haneda" },
-      to:   { code: "ATL", city: "Atlanta" },
+      to:   { code: "ATL", city: "Atlanta (home)" },
       airline: "Delta (ticketed via Virgin Atlantic)",
       flightNo: "DL294",
       aircraft: "Airbus A350-900",
@@ -203,21 +227,6 @@ const TRIP_DATA = {
           ]
         }
       ]
-    },
-    {
-      id: "atl-sea",
-      status: "needed",
-      phase: "homeward",
-      from: { code: "ATL", city: "Atlanta" },
-      to:   { code: "SEA", city: "Seattle" },
-      airline: "Alaska Airlines (planned)",
-      flightNo: "—",
-      cabin: "—",
-      depart: { date: "Sun, Jan 17, 2027 (or Jan 18)", time: "TBD", tz: "Atlanta" },
-      arrive: { date: "TBD", time: "TBD", tz: "Seattle" },
-      duration: "≈ 5h 45m",
-      note: "Last leg home. DL294 lands at 2:50 PM — book an evening connection or an overnight + morning flight. Book before the trip starts!",
-      reservations: []
     }
   ],
 
@@ -284,10 +293,10 @@ const TRIP_DATA = {
     },
     {
       id: "japan-final",
-      status: "verify",
+      status: "needed",
       phase: "finaljapan",
-      emoji: "❓",
-      name: "Final Japan stay — TBD",
+      emoji: "🏨",
+      name: "Final Tokyo-area stay — not yet booked",
       brand: "",
       address: "Location TBD (Tokyo area?)",
       checkIn:  { date: "Thu, Jan 14, 2027", time: "—" },
@@ -296,9 +305,9 @@ const TRIP_DATA = {
       room: "TBD",
       guests: "4 guests",
       codes: [
-        { label: "Chase Travel Trip ID (unverified)", value: "1018055048" }
+        { label: "Chase Travel Trip ID (unconfirmed link)", value: "1018055048" }
       ],
-      note: "No confirmed lodging yet for Jan 14–17 (Cebu checkout → flight home). The Chase Travel booking may cover these nights — verify what Trip #1018055048 actually is. Flight home leaves from Haneda (HND)."
+      note: "Not booked yet — 3 nights needed between the Cebu return and flying home from Haneda (HND) on Jan 17. The Chase Travel Trip ID above may or may not be related; don't assume it covers this until verified."
     }
   ],
 
@@ -308,6 +317,10 @@ const TRIP_DATA = {
      just for fun/context and live entirely here.
      ========================================================================== */
   timeline: [
+    { phase: "prelude", date: "Before Dec 30", emoji: "🧳", type: "flight", ref: "atl-sea",
+      title: "Fly Atlanta → Seattle",
+      blurb: "STILL NEEDS BOOKING — the opening leg, getting the family from home base to Seattle in time for the big international flight." },
+
     { phase: "wheelsup", date: "Wed, Dec 30", emoji: "🛫", type: "flight", ref: "sea-nrt",
       title: "Fly Seattle → Tokyo",
       blurb: "The big one. Wheels up 11:50 AM on JAL 67 — next stop, Japan." },
@@ -352,23 +365,25 @@ const TRIP_DATA = {
       title: "Fly Cebu → Japan",
       blurb: "STILL NEEDS BOOKING — return leg to Japan for the final stretch." },
 
-    { phase: "finaljapan", date: "Jan 14 – 17", emoji: "❓", type: "hotel-in", ref: "japan-final",
-      title: "Final Japan stay — where are we sleeping?",
-      blurb: "3 nights unaccounted for. The mystery Chase Travel booking might be the answer — verify it!" },
+    { phase: "finaljapan", date: "Jan 14 – 17", emoji: "🏨", type: "hotel-in", ref: "japan-final",
+      title: "Final Tokyo-area stay — book this!",
+      blurb: "3 nights, not yet booked. Needs to be sorted before flying home from Haneda on Jan 17." },
 
     { phase: "homeward", date: "Sun, Jan 17", emoji: "🛬", type: "flight", ref: "hnd-atl",
-      title: "Fly Tokyo → Atlanta",
-      blurb: "Depart 4:25 PM, land 2:50 PM the same day. Yes, before you left. The date line gives back." },
-
-    { phase: "homeward", date: "Sun, Jan 17", emoji: "🏠", type: "flight", ref: "atl-sea",
-      title: "Fly Atlanta → Seattle",
-      blurb: "STILL NEEDS BOOKING — the final hop home to Seattle." }
+      title: "Fly Tokyo → Atlanta — home!",
+      blurb: "Depart 4:25 PM, land 2:50 PM the same day. Yes, before you left. The date line gives back. Welcome home!" }
   ],
 
   /* ==========================================================================
      TO-DO — open items. Set done: true (or delete) as you knock them out.
      ========================================================================== */
   todos: [
+    {
+      done: false,
+      priority: "high",
+      title: "Book flight: Atlanta → Seattle (before Dec 30)",
+      detail: "The very first leg of the trip — gets the family from home base to Seattle in time to connect with JL67's 11:50 AM departure on Dec 30. An evening-before arrival (Dec 29) is the safest bet."
+    },
     {
       done: false,
       priority: "high",
@@ -384,8 +399,8 @@ const TRIP_DATA = {
     {
       done: false,
       priority: "high",
-      title: "Book flight: Atlanta → Seattle (Alaska, Jan 17/18)",
-      detail: "DL294 lands ATL at 2:50 PM on Jan 17. Book the last hop home before the trip starts."
+      title: "Book lodging for the final Tokyo-area stay (Jan 14–17)",
+      detail: "Confirmed not booked yet — 3 nights needed between the Cebu return flight and flying home from Haneda on Jan 17. (The Chase Travel Trip ID #1018055048 on file may or may not be related — worth a check, but don't assume it covers this.)"
     },
     {
       done: false,
@@ -396,20 +411,8 @@ const TRIP_DATA = {
     {
       done: false,
       priority: "medium",
-      title: "Pull details on the Chase Travel booking (Trip #1018055048)",
-      detail: "Confirmation was forwarded from Christina's email. Likely additional Japan lodging — it may be the missing Jan 14–17 stay, or a duplicate of Karuizawa/Yokohama. Verify and update this site's data."
-    },
-    {
-      done: false,
-      priority: "medium",
       title: "Confirm Alaska codes for Christina & Leila (SEA→NRT)",
       detail: "Codes on file: NQHBRY / AAN6Q9, e-tickets 0272137089357 & 0272137089358. Double-check with Alaska that both passengers are ticketed on JL67, Dec 30."
-    },
-    {
-      done: false,
-      priority: "medium",
-      title: "Sort out lodging for Jan 14–17 (spotted while building this site)",
-      detail: "Cebu checkout is Jan 14, flight home is Jan 17 — three nights with no confirmed roof yet. Probably resolved by the Chase booking above; if not, book something!"
     }
   ],
 
@@ -417,7 +420,7 @@ const TRIP_DATA = {
      GOOD TO KNOW — stable reference facts for the quick-reference section.
      ========================================================================== */
   goodToKnow: [
-    { emoji: "🕐", title: "Time zones", detail: "Japan is 17 hrs ahead of Seattle (UTC+9). Cebu is 16 hrs ahead (UTC+8) — 1 hr behind Japan." },
+    { emoji: "🕐", title: "Time zones", detail: "Japan is 14 hrs ahead of Atlanta (UTC+9 vs UTC−5). Cebu is 13 hrs ahead (UTC+8) — 1 hr behind Japan." },
     { emoji: "💴", title: "Money", detail: "Japan: yen (¥) — cash still matters at small spots. Philippines: peso (₱). Cards fine at the resort." },
     { emoji: "🔌", title: "Plugs & power", detail: "Japan: Type A (US-style 2-prong), 100V — US plugs fit. Philippines: 220V, Type A/B/C — check chargers for '100–240V'." },
     { emoji: "🚨", title: "Emergency numbers", detail: "Japan: 110 (police) / 119 (fire & ambulance). Philippines: 911." },
