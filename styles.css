@@ -473,6 +473,30 @@ section.wrap { padding-top: 54px; scroll-margin-top: 64px; }
 .level-status.cleared { color: var(--ok); }
 .level-status.current { color: var(--accent); animation: pulse-line 1.6s ease-in-out infinite; }
 
+/* ---------------- pixel parade (retro hero scenes) ----------------
+   Rendered by pixels.js into .pixel-scene: canvas sprites, scaled up
+   with image-rendering: pixelated, animated purely with CSS. */
+.hero--px { padding-top: 14px; }
+.pixel-scene { position: relative; overflow: hidden; margin: 0 -18px 6px; } /* full-bleed past the hero's side padding */
+.pixel-scene canvas { display: block; image-rendering: pixelated; max-width: none; }
+.px-ground { position: absolute; left: 0; right: 0; bottom: 0; z-index: 0; image-rendering: pixelated; }
+.px-strip { position: relative; overflow: hidden; }
+.px-anim { animation: px-step 0.44s steps(2) infinite; }
+@keyframes px-step { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+.px-walker { position: absolute; left: -200px; z-index: 3; animation: px-march linear infinite; }
+.px-cloud { position: absolute; left: -200px; z-index: 0; opacity: 0.9; animation: px-march linear infinite; }
+.px-plane { z-index: 1; opacity: 1; }
+@keyframes px-march { from { transform: translateX(0); } to { transform: translateX(calc(100vw + 400px)); } }
+.px-land { position: absolute; z-index: 1; transform: translateX(-50%); }
+.px-coin { position: absolute; z-index: 2; transform: translateX(-50%); animation: px-bob 1.7s ease-in-out infinite alternate; }
+@keyframes px-bob { from { transform: translateX(-50%) translateY(0); } to { transform: translateX(-50%) translateY(-7px); } }
+.px-hopper .px-strip { animation: px-hop 0.5s cubic-bezier(0.3, 0, 0.7, 1) infinite alternate; }
+@keyframes px-hop { from { transform: translateY(0); } to { transform: translateY(-8px); } }
+@media (prefers-reduced-motion: reduce) {
+  /* the parade politely stands still, spread across the scene */
+  .px-walker, .px-cloud { left: var(--rest, 40%); }
+}
+
 /* ---------------- footer / toast / misc ---------------- */
 .footer {
   margin-top: 70px; padding: 34px 18px 46px; text-align: center;
@@ -501,7 +525,7 @@ section.wrap { padding-top: 54px; scroll-margin-top: 64px; }
 }
 
 @media print {
-  .nav, .hero-decor, .hero-actions, .filters, .theme-toggle, .map-card, .footer .footer-heart { display: none !important; }
+  .nav, .hero-decor, .pixel-scene, .hero-actions, .filters, .theme-toggle, .map-card, .footer .footer-heart { display: none !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
   body { background: #fff; color: #000; }
   .hero { background: none; color: #000; padding: 10px; }

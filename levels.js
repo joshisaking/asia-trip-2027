@@ -40,6 +40,17 @@ const TRIP_LEVELS = [
   },
   {
     level: 4,
+    year: "2024",
+    href: "/2024/",
+    emoji: "👨‍👩‍👧‍👦",
+    title: "Player 4 Joins the Party",
+    dates: "Apr 21 – May 6, 2024",
+    blurb: "Utrecht, the Costa del Sol & Lille — the first quest as a family of four, crowned by King's Day.",
+    grad: "linear-gradient(140deg, #ff9a2e 0%, #e8506e 45%, #3556e8 100%)",
+    status: "cleared"
+  },
+  {
+    level: 5,
     year: "2026–27",
     href: "/",
     emoji: "🌏",
