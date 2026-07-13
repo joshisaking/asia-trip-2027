@@ -35,6 +35,7 @@
         <a href="#hotels">🏨 Stays</a>
         <a href="#todo">✅ To-Do <span class="todo-count" id="todoCount"></span></a>
         <a href="#info">📇 Info</a>
+        <a href="#levels">🕹️ Levels</a>
       </nav>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
     </div>
@@ -131,6 +132,13 @@
       <h2 class="section-title mt"><span>💡</span> Good to Know</h2>
       <div class="know-grid" id="goodToKnow"></div>
     </section>
+
+    <!-- ============ LEVEL SELECT (past trips) ============ -->
+    <section class="wrap" id="levels">
+      <h2 class="section-title"><span>🕹️</span> Level Select</h2>
+      <p class="section-sub">The King family adventures so far — tap a level to relive it.</p>
+      <div class="level-grid" id="levelGrid"></div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -141,6 +149,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+  <script src="levels.js"></script>
   <script src="data.js"></script>
   <script src="app.js"></script>
 </body>

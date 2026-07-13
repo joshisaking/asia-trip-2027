@@ -515,6 +515,32 @@
       .join("");
   }
 
+  /* ---------------- level select (past trips) ---------------- */
+  function renderLevels() {
+    if (typeof TRIP_LEVELS === "undefined") return;
+    $("#levelGrid").innerHTML = TRIP_LEVELS
+      .map((l) => {
+        const status = l.status === "current"
+          ? '<span class="level-status current">▶ Now playing — you are here!</span>'
+          : '<span class="level-status cleared">✓ Cleared ★★★</span>';
+        const href = l.status === "current" ? "#top" : l.href;
+        return `
+        <a class="level-card reveal" href="${href}">
+          <div class="level-top" data-emoji="${l.emoji}" style="background:${l.grad}">
+            <span class="level-year">${esc(l.year)}</span>
+            <span class="level-num">Level ${l.level}</span>
+          </div>
+          <div class="level-body">
+            <h3 class="level-title">${l.emoji} ${esc(l.title)}</h3>
+            <p class="level-dates">${esc(l.dates)}</p>
+            <p class="level-blurb">${esc(l.blurb)}</p>
+            ${status}
+          </div>
+        </a>`;
+      })
+      .join("");
+  }
+
   /* ---------------- filters ---------------- */
   function initFilters() {
     const chips = document.querySelectorAll("#filters .chip");
@@ -636,6 +662,7 @@
   renderHotels();
   renderTodos();
   renderQuickRef();
+  renderLevels();
   initFilters();
   initCopy();
   initShare();

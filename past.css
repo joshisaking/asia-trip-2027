@@ -1,0 +1,70 @@
+/* ============================================================
+   PAST TRIP PAGES — level theming + archive-only components.
+   Loaded on /2017/, /2018/, /2022/ in addition to /styles.css.
+   ============================================================ */
+
+/* ---- Level themes (set via <html data-trip="...">) ---- */
+html[data-trip="t2017"] {
+  --hero-grad: linear-gradient(140deg, #fbbf24 0%, #06b6d4 45%, #1d4ed8 100%);
+  --accent: #0284c7;
+}
+html[data-trip="t2018"] {
+  --hero-grad: linear-gradient(140deg, #a3e635 0%, #10b981 45%, #0e7490 100%);
+  --accent: #0f9d6b;
+}
+html[data-trip="t2022"] {
+  --hero-grad: linear-gradient(140deg, #38bdf8 0%, #818cf8 45%, #e11d48 100%);
+  --accent: #d43f57;
+}
+
+/* ---- hero: "LEVEL CLEARED" stamp instead of a countdown ---- */
+.level-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-weight: 900; font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.22); border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff; padding: 6px 14px; border-radius: 999px; margin-bottom: 14px;
+}
+.stamp {
+  display: inline-block; margin: 4px 0 22px;
+  border: 3px dashed rgba(255, 255, 255, 0.8); border-radius: 18px;
+  padding: 12px 26px; transform: rotate(-2.5deg);
+  background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(4px);
+}
+.stamp .stamp-top {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(1.25rem, 5vw, 1.7rem); letter-spacing: 2.5px;
+}
+.stamp .stamp-stars { font-size: 1.2rem; letter-spacing: 6px; display: block; margin-top: 2px; }
+.stamp .stamp-sub { font-size: 0.78rem; font-weight: 800; opacity: 0.95; letter-spacing: 1px; text-transform: uppercase; }
+
+/* ---- achievements ---- */
+.ach-grid { display: grid; gap: 12px; }
+@media (min-width: 640px) { .ach-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 900px) { .ach-grid { grid-template-columns: 1fr 1fr 1fr; } }
+.ach {
+  display: flex; gap: 12px; align-items: flex-start;
+  background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+  box-shadow: var(--shadow); padding: 14px 16px; position: relative; overflow: hidden;
+}
+.ach::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+  background: var(--accent, var(--sunset-b));
+}
+.ach-emoji {
+  width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 22px;
+  background: var(--chip);
+}
+.ach h3 { margin: 0 0 2px; font-size: 0.95rem; font-weight: 900; }
+.ach p { margin: 0; color: var(--muted); font-weight: 700; font-size: 0.85rem; }
+
+/* ---- route map: flights use the level's accent color ---- */
+.seg-fly { stroke: var(--accent); animation: dashflow 1.6s linear infinite; }
+
+/* ---- misc past-page touches ---- */
+.back-cta {
+  display: inline-block; margin-top: 8px;
+  font-weight: 900; text-decoration: none; color: var(--accent, var(--sunset-b));
+}
+.back-cta:hover { text-decoration: underline; }
+.event-facts { display: grid; gap: 5px; }

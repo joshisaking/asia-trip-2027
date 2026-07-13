@@ -2,13 +2,22 @@
    Strategy: network-first for our own files (so updates show up when online),
    falling back to cache when offline. Google Fonts are cached cache-first. */
 
-const CACHE = "asia-trip-v1";
+const CACHE = "asia-trip-v2";
 const ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
   "./app.js",
   "./data.js",
+  "./levels.js",
+  "./past.css",
+  "./past.js",
+  "./2017/",
+  "./2017/data.js",
+  "./2018/",
+  "./2018/data.js",
+  "./2022/",
+  "./2022/data.js",
   "./manifest.webmanifest",
   "./icons/favicon.svg",
   "./icons/icon-192.png",
