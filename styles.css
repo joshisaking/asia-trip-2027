@@ -24,6 +24,7 @@
   --warn: #b26e00;
   --warn-bg: #fff1d6;
 
+  --ph-prelude: #64748b;
   --ph-wheelsup: #5b6bf5;
   --ph-karuizawa: #2f96e8;
   --ph-yokohama: #0ea5a4;
@@ -247,7 +248,7 @@ section.wrap { padding-top: 54px; scroll-margin-top: 64px; }
   border-radius: var(--radius); box-shadow: var(--shadow); padding: 12px 6px 6px;
 }
 .map-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-.map-scroll svg { min-width: 730px; display: block; margin: 0 auto; }
+.map-scroll svg { display: block; margin: 0 auto; width: 100%; height: auto; }
 .map-stop { cursor: pointer; }
 .map-stop circle.halo { transition: r 0.2s; }
 .map-stop:hover circle.halo { r: 30; }

@@ -9,6 +9,7 @@
 
   const D = TRIP_DATA;
   const $ = (sel) => document.querySelector(sel);
+  const mapMQ = window.matchMedia("(max-width: 700px)");
 
   const esc = (s) =>
     String(s ?? "").replace(/[&<>"']/g, (m) =>
@@ -133,67 +134,143 @@
     else openCount.style.display = "none";
   }
 
-  /* ---------------- route map ---------------- */
+  /* ---------------- route map ----------------
+     Atlanta is home, so the trip is a full loop: ATL → SEA → NRT →
+     Karuizawa → Yokohama → Cebu → HND → ATL. Renders a wide serpentine
+     on tablet/desktop and a swipe-free vertical "subway map" on phones,
+     picked (and re-picked live via mapMQ) by viewport width. */
   function renderRouteMap() {
     const st = (id) => (flightById(id) || {}).status || "ground";
     const segClass = { confirmed: "seg-ok", needed: "seg-bad", verify: "seg-bad", ground: "seg-ground" };
-
-    const segs = [
-      { d: "M100,110 L430,110", status: st("sea-nrt") },
-      { d: "M430,110 L760,110", status: "ground", ground: { x: 595, y: 98 } },
-      { d: "M760,110 L880,110 A60,60 0 0 1 940,170 L940,250 A60,60 0 0 1 880,310 L760,310", status: "ground", ground: { x: 962, y: 216 } },
-      { d: "M760,310 L400,310", status: st("jpn-ceb"), label: { x: 580, y: 296 } },
-      { d: "M400,310 L120,310 A60,60 0 0 0 60,370 L60,450 A60,60 0 0 0 120,510 L180,510", status: st("ceb-jpn"), label: { x: 262, y: 296 } },
-      { d: "M180,510 L530,510", status: st("hnd-atl") },
-      { d: "M530,510 L880,510", status: st("atl-sea"), label: { x: 705, y: 496 } },
-    ];
-
-    const stops = [
-      { x: 100, y: 110, emoji: "🌲", name: "Seattle", sub: "Dec 30", above: true, target: "ch-wheelsup" },
-      { x: 430, y: 110, emoji: "⛩️", name: "Tokyo · Narita", sub: "Dec 31", above: true, target: "ch-karuizawa" },
-      { x: 760, y: 110, emoji: "⛄", name: "Karuizawa", sub: "Dec 31 – Jan 4", above: true, target: "ch-karuizawa" },
-      { x: 760, y: 310, emoji: "🎡", name: "Yokohama", sub: "Jan 4 – 8", above: false, target: "ch-yokohama" },
-      { x: 400, y: 310, emoji: "🏝️", name: "Cebu", sub: "Jan 8 – 14", above: false, target: "ch-cebu" },
-      { x: 180, y: 510, emoji: "🗼", name: "Tokyo · Haneda", sub: "Jan 14 – 17", above: false, target: "ch-finaljapan" },
-      { x: 530, y: 510, emoji: "🍑", name: "Atlanta", sub: "Jan 17", above: false, target: "ch-homeward" },
-      { x: 880, y: 510, emoji: "🏡", name: "Seattle", sub: "Home!", above: false, target: "ch-homeward" },
-    ];
-
-    const planePath = "M100,110 L430,110 L760,110 L880,110 A60,60 0 0 1 940,170 L940,250 A60,60 0 0 1 880,310 L760,310 L400,310 L120,310 A60,60 0 0 0 60,370 L60,450 A60,60 0 0 0 120,510 L180,510 L530,510 L880,510";
-
     const segDash = { "seg-ok": "2 11", "seg-bad": "8 8", "seg-ground": "1 9" };
+    const needsBook = (s) => s === "needed" || s === "verify";
+    const PLANE = '<path d="M-1,-8 L18,0 L-1,8 L4,0 Z" fill="var(--ink)" opacity="0.9"/>';
 
-    const svg = `
-    <svg viewBox="0 0 1000 595" role="img" aria-label="Trip route map: Seattle to Tokyo to Karuizawa to Yokohama to Cebu to Tokyo to Atlanta and home to Seattle">
-      ${segs
-        .map((s) => {
-          const cls = segClass[s.status];
-          return `<path d="${s.d}" fill="none" class="${cls}" stroke-width="${cls === "seg-ground" ? 4 : 5}" stroke-linecap="round" stroke-dasharray="${segDash[cls]}"/>` +
-            (s.label && (s.status === "needed" || s.status === "verify")
-              ? `<text x="${s.label.x}" y="${s.label.y}" text-anchor="middle" class="map-seg-label" fill="var(--bad)">⚠ BOOK ME</text>`
-              : "") +
-            (s.ground ? `<text x="${s.ground.x}" y="${s.ground.y}" text-anchor="middle" font-size="17">🚄</text>` : "");
+    const journey = [
+      { emoji: "🧳", name: "Atlanta", sub: "Home · before Dec 30", target: "ch-prelude" },
+      { emoji: "🌲", name: "Seattle", sub: "Dec 30", target: "ch-wheelsup" },
+      { emoji: "⛩️", name: "Tokyo · Narita", sub: "Dec 31", target: "ch-karuizawa" },
+      { emoji: "⛄", name: "Karuizawa", sub: "Dec 31 – Jan 4", target: "ch-karuizawa" },
+      { emoji: "🎡", name: "Yokohama", sub: "Jan 4 – 8", target: "ch-yokohama" },
+      { emoji: "🏝️", name: "Cebu", sub: "Jan 8 – 14", target: "ch-cebu" },
+      { emoji: "🗼", name: "Tokyo · Haneda", sub: "Jan 14 – 17", target: "ch-finaljapan" },
+      { emoji: "🏡", name: "Atlanta", sub: "Home!", target: "ch-homeward" },
+    ];
+    // 7 segments connecting the 8 stops above, in order.
+    const segStatus = [st("atl-sea"), st("sea-nrt"), "ground", "ground", st("jpn-ceb"), st("ceb-jpn"), st("hnd-atl")];
+    const ariaLabel = `Trip route map: ${journey.map((j) => j.name).join(" to ")}`;
+
+    function buildDesktop() {
+      const pts = [
+        { x: 80, y: 110 }, { x: 300, y: 110 }, { x: 530, y: 110 }, { x: 760, y: 110 },
+        { x: 760, y: 310 }, { x: 400, y: 310 },
+        { x: 180, y: 510 }, { x: 530, y: 510 },
+      ];
+      const above = [true, true, true, true, false, false, false, false];
+      const segPaths = [
+        "M80,110 L300,110",
+        "M300,110 L530,110",
+        "M530,110 L760,110",
+        "M760,110 L880,110 A60,60 0 0 1 940,170 L940,250 A60,60 0 0 1 880,310 L760,310",
+        "M760,310 L400,310",
+        "M400,310 L120,310 A60,60 0 0 0 60,370 L60,450 A60,60 0 0 0 120,510 L180,510",
+        "M180,510 L530,510",
+      ];
+      const segMeta = [
+        { label: { x: 190, y: 96 } },
+        {},
+        { ground: { x: 645, y: 96 } },
+        { ground: { x: 962, y: 216 } },
+        { label: { x: 580, y: 296 } },
+        { label: { x: 262, y: 296 } },
+        {},
+      ];
+      const planePath = "M80,110 L300,110 L530,110 L760,110 L880,110 A60,60 0 0 1 940,170 L940,250 A60,60 0 0 1 880,310 L760,310 L400,310 L120,310 A60,60 0 0 0 60,370 L60,450 A60,60 0 0 0 120,510 L180,510 L530,510";
+
+      const segsSVG = segPaths
+        .map((d, i) => {
+          const status = segStatus[i];
+          const cls = segClass[status];
+          const meta = segMeta[i];
+          let extra = "";
+          if (meta.label && needsBook(status)) {
+            extra += `<text x="${meta.label.x}" y="${meta.label.y}" text-anchor="middle" class="map-seg-label" fill="var(--bad)">⚠ BOOK ME</text>`;
+          }
+          if (meta.ground) {
+            extra += `<text x="${meta.ground.x}" y="${meta.ground.y}" text-anchor="middle" font-size="17">🚄</text>`;
+          }
+          return `<path d="${d}" fill="none" class="${cls}" stroke-width="${cls === "seg-ground" ? 4 : 5}" stroke-linecap="round" stroke-dasharray="${segDash[cls]}"/>${extra}`;
         })
-        .join("")}
-      ${stops
-        .map(
-          (p) => `
-        <g class="map-stop" data-target="${p.target}" tabindex="0" role="button" aria-label="${esc(p.name)}">
-          <circle class="halo" cx="${p.x}" cy="${p.y}" r="26" fill="var(--chip)"/>
-          <circle cx="${p.x}" cy="${p.y}" r="22" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
-          <text x="${p.x}" y="${p.y + 7}" text-anchor="middle" font-size="20">${p.emoji}</text>
-          <text x="${p.x}" y="${p.above ? p.y - 54 : p.y + 46}" text-anchor="middle" class="map-label">${esc(p.name)}</text>
-          <text x="${p.x}" y="${p.above ? p.y - 36 : p.y + 64}" text-anchor="middle" class="map-sublabel">${esc(p.sub)}</text>
-        </g>`
-        )
-        .join("")}
-      <g>
-        <path d="M-1,-8 L18,0 L-1,8 L4,0 Z" fill="var(--ink)" opacity="0.9"/>
-        <animateMotion dur="30s" repeatCount="indefinite" rotate="auto" path="${planePath}"/>
-      </g>
-    </svg>`;
+        .join("");
 
-    $("#routeMap").innerHTML = svg;
+      const stopsSVG = journey
+        .map((s, i) => {
+          const { x, y } = pts[i];
+          const ay = above[i];
+          return `
+        <g class="map-stop" data-target="${s.target}" tabindex="0" role="button" aria-label="${esc(s.name)}">
+          <circle class="halo" cx="${x}" cy="${y}" r="26" fill="var(--chip)"/>
+          <circle cx="${x}" cy="${y}" r="22" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
+          <text x="${x}" y="${y + 7}" text-anchor="middle" font-size="20">${s.emoji}</text>
+          <text x="${x}" y="${ay ? y - 54 : y + 46}" text-anchor="middle" class="map-label">${esc(s.name)}</text>
+          <text x="${x}" y="${ay ? y - 36 : y + 64}" text-anchor="middle" class="map-sublabel">${esc(s.sub)}</text>
+        </g>`;
+        })
+        .join("");
+
+      return `
+      <svg viewBox="0 0 1000 595" role="img" aria-label="${esc(ariaLabel)}">
+        ${segsSVG}
+        ${stopsSVG}
+        <g>${PLANE}<animateMotion dur="30s" repeatCount="indefinite" rotate="auto" path="${planePath}"/></g>
+      </svg>`;
+    }
+
+    function buildMobile() {
+      const STEP = 140, START = 60, CX = 46, LX = CX + 34;
+      const ys = journey.map((_, i) => START + i * STEP);
+      const height = ys[ys.length - 1] + 110;
+
+      const segsSVG = segStatus
+        .map((status, i) => {
+          const y1 = ys[i] + 26, y2 = ys[i + 1] - 26;
+          const mid = (y1 + y2) / 2;
+          const cls = segClass[status];
+          let extra = "";
+          if (needsBook(status)) {
+            extra = `<text x="${LX}" y="${mid + 5}" text-anchor="start" class="map-seg-label" fill="var(--bad)">⚠ BOOK ME</text>`;
+          } else if (status === "ground") {
+            extra = `<text x="${CX}" y="${mid + 6}" text-anchor="middle" font-size="15">🚄</text>`;
+          }
+          return `<path d="M${CX},${y1} L${CX},${y2}" fill="none" class="${cls}" stroke-width="${cls === "seg-ground" ? 4 : 5}" stroke-linecap="round" stroke-dasharray="${segDash[cls]}"/>${extra}`;
+        })
+        .join("");
+
+      const stopsSVG = journey
+        .map((s, i) => {
+          const y = ys[i];
+          return `
+        <g class="map-stop" data-target="${s.target}" tabindex="0" role="button" aria-label="${esc(s.name)}">
+          <circle class="halo" cx="${CX}" cy="${y}" r="26" fill="var(--chip)"/>
+          <circle cx="${CX}" cy="${y}" r="22" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
+          <text x="${CX}" y="${y + 7}" text-anchor="middle" font-size="19">${s.emoji}</text>
+          <text x="${LX}" y="${y - 3}" text-anchor="start" class="map-label">${esc(s.name)}</text>
+          <text x="${LX}" y="${y + 15}" text-anchor="start" class="map-sublabel">${esc(s.sub)}</text>
+        </g>`;
+        })
+        .join("");
+
+      const planePath = "M" + ys.map((y) => `${CX},${y}`).join(" L");
+
+      return `
+      <svg viewBox="0 0 320 ${height}" role="img" aria-label="${esc(ariaLabel)}">
+        ${segsSVG}
+        ${stopsSVG}
+        <g>${PLANE}<animateMotion dur="22s" repeatCount="indefinite" rotate="auto" path="${planePath}"/></g>
+      </svg>`;
+    }
+
+    $("#routeMap").innerHTML = mapMQ.matches ? buildMobile() : buildDesktop();
 
     $("#routeMap").querySelectorAll(".map-stop").forEach((g) => {
       const go = () => {
@@ -387,6 +464,7 @@
   /* ---------------- quick reference ---------------- */
   function renderQuickRef() {
     const order = [
+      { kind: "flight", id: "atl-sea" },
       { kind: "flight", id: "sea-nrt" },
       { kind: "hotel", id: "karuizawa-hotel" },
       { kind: "hotel", id: "yokohama-hotel" },
@@ -395,7 +473,6 @@
       { kind: "flight", id: "ceb-jpn" },
       { kind: "hotel", id: "japan-final" },
       { kind: "flight", id: "hnd-atl" },
-      { kind: "flight", id: "atl-sea" },
     ];
 
     $("#quickRef").innerHTML = order
@@ -564,4 +641,9 @@
   initShare();
   initReveal();
   initSW();
+
+  // Re-lay the route map if the viewport crosses the mobile/desktop breakpoint
+  // (e.g. rotating a phone/tablet, or resizing a browser window).
+  if (mapMQ.addEventListener) mapMQ.addEventListener("change", renderRouteMap);
+  else if (mapMQ.addListener) mapMQ.addListener(renderRouteMap);
 })();
