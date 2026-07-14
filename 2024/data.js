@@ -1,8 +1,8 @@
 /* ============================================================================
    LEVEL 4 · EUROPE 2024 — "Player 4 Joins the Party"
    Apr 21 – May 6, 2024 · Joshua, Christina, Lucas (4) & Leila (1) · Netherlands,
-   Spain & France — the first trip as a family of four. Edit this file to tweak
-   anything on the /2024/ page.
+   Spain, France & a Belgium day trip — the first trip as a family of four.
+   Edit this file to tweak anything on the /2024/ page.
    ============================================================================ */
 
 const PAST_TRIP = {
@@ -23,7 +23,7 @@ const PAST_TRIP = {
     ],
     stats: [
       { value: "16", label: "days" },
-      { value: "3",  label: "countries" },
+      { value: "4",  label: "countries" },
       { value: "4",  label: "flights" },
       { value: "4",  label: "players" }
     ]
@@ -95,6 +95,8 @@ const PAST_TRIP = {
           address: "335 Bd de Leeds, 59777 Lille, France" },
         { date: "May 3 – 5", emoji: "🧇", title: "Vieux Lille with friends",
           blurb: "The Grand Place, cobbled old-town lanes, and waffle stops — France at kid pace, with backup adults." },
+        { date: "Sun, May 5", emoji: "🍫", title: "Day trip to Belgium — Mouscron",
+          blurb: "A train across the border from Lille with Jenna and Yadi to officially claim country #4. Wandered into Mouscron's town square just as a local chocolatier was closing up shop and grabbed authentic Belgian chocolates to bring home, then settled into a tavern in the square for Belgian beers and local dishes — where Lucas tried escargot for the first time. A few hours round trip, well worth the detour before flying home." },
         { date: "Mon, May 6", emoji: "🛬", title: "Home via Paris",
           blurb: "The hop down to Charles de Gaulle, then Air France AF0032 — depart 2 PM, land Atlanta 5:25 PM. Family of four: level cleared.",
           codes: [{ label: "Virgin Atlantic booking", value: "FAD8DS" }] }
@@ -109,6 +111,7 @@ const PAST_TRIP = {
     { emoji: "🌷", title: "Tulip Season II", detail: "Back in Holland at peak bloom, seven years after the Grand Tour." },
     { emoji: "🏖️", title: "Beach Level: Co-op Mode", detail: "Costa del Sol sand with two kids under five. Nobody ate the sand (probably)." },
     { emoji: "🤝", title: "Two-Family Raid Party", detail: "Linked up with the Taylors in Lille — adjacent rooms at Hotel Euralille." },
+    { emoji: "🍫", title: "Bonus Level: Belgium", detail: "A Sunday train from Lille to Mouscron with Jenna and Yadi — chocolates, beer, and Lucas's first escargot, all for country #4." },
     { emoji: "✈️", title: "Four-Airline Combo", detail: "Delta, KLM, Volotea and Air France, all in 16 days." },
     { emoji: "🚄", title: "De Gaulle Dash", detail: "Lille → Charles de Gaulle → Atlanta with the full crew, the gear, and the stroller." }
   ],
