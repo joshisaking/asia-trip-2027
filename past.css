@@ -1,6 +1,6 @@
 /* ============================================================
    PAST TRIP PAGES — level theming + archive-only components.
-   Loaded on /2017/, /2018/, /2022/ in addition to /styles.css.
+   Loaded on /2017/, /2018/, /2022/, /2024/ in addition to /styles.css.
    ============================================================ */
 
 /* ---- Level themes (set via <html data-trip="...">) ---- */
@@ -15,6 +15,10 @@ html[data-trip="t2018"] {
 html[data-trip="t2022"] {
   --hero-grad: linear-gradient(140deg, #38bdf8 0%, #818cf8 45%, #e11d48 100%);
   --accent: #d43f57;
+}
+html[data-trip="t2024"] {
+  --hero-grad: linear-gradient(140deg, #ff9a2e 0%, #e8506e 45%, #3556e8 100%);
+  --accent: #e8590c;
 }
 
 /* ---- hero: "LEVEL CLEARED" stamp instead of a countdown ---- */

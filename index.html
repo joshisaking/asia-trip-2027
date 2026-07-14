@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-trip="home">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -43,12 +43,11 @@
 
   <main>
     <!-- ============ HERO ============ -->
-    <section class="hero">
+    <section class="hero hero--px">
       <div class="hero-decor" aria-hidden="true">
-        <span class="cloud c1"></span><span class="cloud c2"></span><span class="cloud c3"></span>
-        <span class="hero-plane">✈️</span>
         <span class="hero-sun"></span>
       </div>
+      <div class="pixel-scene" id="pixelScene" aria-hidden="true"></div>
       <div class="hero-inner">
         <p class="hero-kicker" id="heroDates">Dec 30, 2026 – Jan 17, 2027</p>
         <h1 id="heroTitle">The Kings Take Asia</h1>
@@ -152,5 +151,6 @@
   <script src="levels.js"></script>
   <script src="data.js"></script>
   <script src="app.js"></script>
+  <script src="pixels.js"></script>
 </body>
 </html>

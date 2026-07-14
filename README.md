@@ -1,6 +1,6 @@
 # 👑 King Family Trips
 
-Private family travel site. The homepage is the **current adventure** (Asia, Dec 30, 2026 → Jan 17, 2027); past trips live at `/2017/`, `/2018/`, and `/2022/` as video-game-style "levels" linked from the Level Select menu.
+Private family travel site. The homepage is the **current adventure** (Asia, Dec 30, 2026 → Jan 17, 2027); past trips live at `/2017/`, `/2018/`, `/2022/`, and `/2024/` as video-game-style "levels" linked from the Level Select menu.
 Live at **https://asia-trip-2027.vercel.app/**
 
 Plain HTML/CSS/JS — no build step, no dependencies. Vercel serves the repo root as-is.
@@ -46,8 +46,9 @@ When you update `data.js`, online visitors get the new version on next load (net
 | `data.js` | **The current trip's itinerary. Edit this one.** |
 | `index.html` / `styles.css` / `app.js` | Current-trip page shell, styling, rendering — data-driven, no trip facts inside |
 | `levels.js` | The Level Select registry — one entry per trip, shared by every page |
-| `2017/` `2018/` `2022/` | Past-trip pages: each folder is just an `index.html` + a `data.js` with that trip's story |
+| `2017/` `2018/` `2022/` `2024/` | Past-trip pages: each folder is just an `index.html` + a `data.js` with that trip's story |
 | `past.js` + `past.css` | Shared renderer + level theming for all past-trip pages |
+| `pixels.js` | The retro "pixel parade" hero scenes — original 8-bit sprites of the family & each trip's destinations |
 | `sw.js` + `manifest.webmanifest` | Offline support + Add-to-Home-Screen |
 | `robots.txt` + `vercel.json` | Keep search engines out |
 | `scripts/generate-icons.py` | Regenerates the PNG icons (`python3 scripts/generate-icons.py`), stdlib only |
@@ -58,4 +59,5 @@ When you update `data.js`, online visitors get the new version on next load (net
 2. In the new `index.html`, change `data-trip="tYYYY"`, the `<title>`, and the `theme-color`.
 3. Give the level its own colors: add an `html[data-trip="tYYYY"]` block in `past.css` (hero gradient + accent).
 4. Add the trip to `levels.js` — it then appears in every Level Select menu automatically.
-5. Optional: add the new pages to the precache list in `sw.js` and bump its cache version.
+5. Give the hero its pixel parade: add a scene for `tYYYY` in `pixels.js` (`SCENES`) — pick the family sprites for who went, plus a destination companion & landmarks (draw new ones as ASCII pixel maps like the existing sprites).
+6. Optional: add the new pages to the precache list in `sw.js` and bump its cache version.
