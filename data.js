@@ -28,12 +28,14 @@ const TRIP_DATA = {
   meta: {
     title: "The Kings Take Asia",
     subtitle: "Atlanta → Seattle → Japan → Philippines → home again",
-    dateRange: "Dec 30, 2026 – Jan 17, 2027",
-    // Exact moment of departure (Seattle time) — powers the countdown.
-    departureISO: "2026-12-30T11:50:00-08:00",
+    dateRange: "Dec 28, 2026 – Jan 17, 2027",
+    // Trip start: the day everyone leaves for Seattle (ATL→SEA flight still TBD,
+    // so this counts down to the start of that day, Atlanta time). Once the
+    // flight is booked, swap in its exact departure time here.
+    departureISO: "2026-12-28T00:01:00-05:00",
     // Rough end of trip (evening of the day they land back home, Atlanta/Eastern time).
     tripEndISO: "2027-01-18T00:00:00-05:00",
-    tripDays: 19,
+    tripDays: 21,
     travelers: [
       { name: "Joshua King",    emoji: "👨" },
       { name: "Christina King", emoji: "👩" },
@@ -41,10 +43,10 @@ const TRIP_DATA = {
       { name: "Leila King",     emoji: "👧" }
     ],
     stats: [
-      { value: "19",      label: "days" },
+      { value: "21",      label: "days" },
       { value: "2",       label: "countries" },
       { value: "~18,000", label: "miles" },
-      { value: "17",      label: "nights" }
+      { value: "19",      label: "nights" }
     ]
   },
 
@@ -56,10 +58,10 @@ const TRIP_DATA = {
       id: "prelude",
       emoji: "🧳",
       name: "Getting to the Starting Line",
-      dates: "Before Dec 30",
-      tagline: "Home base (Atlanta) → Seattle, to link up with the big international flight.",
-      weather: "",
-      funFact: "Atlanta is home base for the King family — this repositioning flight gets everyone to Seattle in time for JL67's 11:50 AM departure on Dec 30."
+      dates: "Dec 28 – 30",
+      tagline: "Home (Atlanta) → Seattle, with two downtown nights before the big flight.",
+      weather: "🌧️ Seattle in late Dec: typically 37–47°F (3–8°C), bring a rain layer",
+      funFact: "Sleeping in Seattle beats sprinting for an 11:50 AM international departure — and Dec 29 is wide open. Pike Place morning, anyone?"
     },
     {
       id: "wheelsup",
@@ -133,10 +135,10 @@ const TRIP_DATA = {
       airline: "Alaska Airlines (planned)",
       flightNo: "—",
       cabin: "—",
-      depart: { date: "On/before Tue, Dec 29–30, 2026", time: "TBD", tz: "Atlanta" },
-      arrive: { date: "TBD", time: "TBD", tz: "Seattle" },
+      depart: { date: "Mon, Dec 28, 2026", time: "TBD", tz: "Atlanta" },
+      arrive: { date: "Mon, Dec 28, 2026", time: "TBD", tz: "Seattle" },
       duration: "≈ 5h 45m",
-      note: "The very first leg of the trip — gets the family from home base to Seattle in time to connect with JL67's 11:50 AM departure on Dec 30. An evening-before arrival (Dec 29) is the safest bet. Book this!",
+      note: "The very first leg of the trip. The W Seattle is booked for Dec 28 (check-in 4:00 PM), so aim to land Monday afternoon/evening. Book this!",
       reservations: []
     },
     {
@@ -235,6 +237,25 @@ const TRIP_DATA = {
      ========================================================================== */
   hotels: [
     {
+      id: "seattle-w",
+      status: "confirmed",
+      phase: "prelude",
+      emoji: "🎸",
+      name: "W Seattle",
+      brand: "W Hotels · booked via Chase Travel \"The Edit\"",
+      address: "1112 4th Ave, Seattle, WA 98101",
+      checkIn:  { date: "Mon, Dec 28, 2026", time: "4:00 PM" },
+      checkOut: { date: "Wed, Dec 30, 2026", time: "12:00 PM" },
+      nights: 2,
+      room: "The Edit — Chase Travel plan",
+      guests: "2 guests on the booking · primary: Joshua L King",
+      codes: [
+        { label: "Hotel confirmation", value: "78076207" },
+        { label: "Chase Trip ID", value: "1020477405" }
+      ],
+      note: "Labeled \"Seattle Stay 1\" in Chase with 2 guests — confirm how the other half of the family is covered (see To-Do). Checkout is officially noon, but JL67 departs 11:50 AM on the 30th: be out the door by ~8 AM. (Conf shows as \"78076207-\" in the Chase app.)"
+    },
+    {
       id: "karuizawa-hotel",
       status: "confirmed",
       phase: "karuizawa",
@@ -317,9 +338,17 @@ const TRIP_DATA = {
      just for fun/context and live entirely here.
      ========================================================================== */
   timeline: [
-    { phase: "prelude", date: "Before Dec 30", emoji: "🧳", type: "flight", ref: "atl-sea",
+    { phase: "prelude", date: "Mon, Dec 28", emoji: "🧳", type: "flight", ref: "atl-sea",
       title: "Fly Atlanta → Seattle",
-      blurb: "STILL NEEDS BOOKING — the opening leg, getting the family from home base to Seattle in time for the big international flight." },
+      blurb: "STILL NEEDS BOOKING — the opening leg. The W is holding the beds from Monday, so land by afternoon/evening." },
+
+    { phase: "prelude", date: "Mon, Dec 28", emoji: "🎸", type: "hotel-in", ref: "seattle-w",
+      title: "Check in: W Seattle",
+      blurb: "Two downtown nights to start the trip easy — and Dec 29 is a free Seattle day. Pike Place? Great Wheel?" },
+
+    { phase: "wheelsup", date: "Wed, Dec 30", emoji: "🧳", type: "hotel-out", ref: "seattle-w",
+      title: "Early checkout → SEA airport",
+      blurb: "JL67 leaves at 11:50 AM — be out the door by ~8 AM for bags, trains, and international check-in." },
 
     { phase: "wheelsup", date: "Wed, Dec 30", emoji: "🛫", type: "flight", ref: "sea-nrt",
       title: "Fly Seattle → Tokyo",
@@ -381,8 +410,14 @@ const TRIP_DATA = {
     {
       done: false,
       priority: "high",
-      title: "Book flight: Atlanta → Seattle (before Dec 30)",
-      detail: "The very first leg of the trip — gets the family from home base to Seattle in time to connect with JL67's 11:50 AM departure on Dec 30. An evening-before arrival (Dec 29) is the safest bet."
+      title: "Book flight: Atlanta → Seattle (Mon, Dec 28)",
+      detail: "The W Seattle is now booked for Dec 28–30 (check-in 4:00 PM), so book the flight to land Monday afternoon/evening. JL67 departs SEA at 11:50 AM on the 30th."
+    },
+    {
+      done: false,
+      priority: "medium",
+      title: "Confirm the Seattle W booking covers all 4",
+      detail: "Chase shows this as \"Seattle Stay 1\" with 2 guests (primary: Joshua, Trip #1020477405). If there's a \"Seattle Stay 2\" for the second room, send its details over to add here — if not, adjust the booking."
     },
     {
       done: false,
@@ -400,7 +435,7 @@ const TRIP_DATA = {
       done: false,
       priority: "high",
       title: "Book lodging for the final Tokyo-area stay (Jan 14–17)",
-      detail: "Confirmed not booked yet — 3 nights needed between the Cebu return flight and flying home from Haneda on Jan 17. (The Chase Travel Trip ID #1018055048 on file may or may not be related — worth a check, but don't assume it covers this.)"
+      detail: "Confirmed not booked yet — 3 nights needed between the Cebu return flight and flying home from Haneda on Jan 17. (The Chase Travel Trip ID #1018055048 on file may or may not be related — worth a check, but don't assume it covers this. It's not the W Seattle stay; that one is Trip #1020477405.)"
     },
     {
       done: false,

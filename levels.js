@@ -55,7 +55,7 @@ const TRIP_LEVELS = [
     href: "/",
     emoji: "🌏",
     title: "The Kings Take Asia",
-    dates: "Dec 30, 2026 – Jan 17, 2027",
+    dates: "Dec 28, 2026 – Jan 17, 2027",
     blurb: "Japan snow, Tokyo-bay city lights and Philippine beaches — the current adventure.",
     grad: "linear-gradient(140deg, #ff9e57 0%, #ff5d8a 45%, #8e5cf7 100%)",
     status: "current"

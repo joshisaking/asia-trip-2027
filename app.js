@@ -147,8 +147,8 @@
     const PLANE = '<path d="M-1,-8 L18,0 L-1,8 L4,0 Z" fill="var(--ink)" opacity="0.9"/>';
 
     const journey = [
-      { emoji: "🧳", name: "Atlanta", sub: "Home · before Dec 30", target: "ch-prelude" },
-      { emoji: "🌲", name: "Seattle", sub: "Dec 30", target: "ch-wheelsup" },
+      { emoji: "🧳", name: "Atlanta", sub: "Home · Dec 28", target: "ch-prelude" },
+      { emoji: "🌲", name: "Seattle", sub: "Dec 28 – 30", target: "ch-prelude" },
       { emoji: "⛩️", name: "Tokyo · Narita", sub: "Dec 31", target: "ch-karuizawa" },
       { emoji: "⛄", name: "Karuizawa", sub: "Dec 31 – Jan 4", target: "ch-karuizawa" },
       { emoji: "🎡", name: "Yokohama", sub: "Jan 4 – 8", target: "ch-yokohama" },
@@ -465,6 +465,7 @@
   function renderQuickRef() {
     const order = [
       { kind: "flight", id: "atl-sea" },
+      { kind: "hotel", id: "seattle-w" },
       { kind: "flight", id: "sea-nrt" },
       { kind: "hotel", id: "karuizawa-hotel" },
       { kind: "hotel", id: "yokohama-hotel" },
