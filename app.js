@@ -492,14 +492,15 @@
           </div>`;
         }
         const h = hotelById(o.id);
+        const hChips = [
+          ...h.codes.map((c) => copyChip(c.label, c.value)),
+          ...(/TBD/i.test(h.address) ? [] : [copyChip("Address", h.address)]),
+        ];
         return `
         <div class="qr-group reveal">
           <div class="qr-head"><h3 class="qr-title">${h.emoji} ${esc(h.name)}</h3>${badge(h.status)}</div>
           <p class="qr-sub">${esc(h.checkIn.date)} → ${esc(h.checkOut.date)} · ${h.nights} nights</p>
-          <div class="codes">
-            ${h.codes.map((c) => copyChip(c.label, c.value)).join("")}
-            ${copyChip("Address", h.address)}
-          </div>
+          ${hChips.length ? `<div class="codes">${hChips.join("")}</div>` : `<p class="qr-sub">Nothing to copy yet — this stay still needs booking.</p>`}
           ${mapsLink(h.address)}
         </div>`;
       })

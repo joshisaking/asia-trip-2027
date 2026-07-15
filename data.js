@@ -325,10 +325,8 @@ const TRIP_DATA = {
       nights: 3,
       room: "TBD",
       guests: "4 guests",
-      codes: [
-        { label: "Chase Travel Trip ID (unconfirmed link)", value: "1018055048" }
-      ],
-      note: "Not booked yet — 3 nights needed between the Cebu return and flying home from Haneda (HND) on Jan 17. The Chase Travel Trip ID above may or may not be related; don't assume it covers this until verified."
+      codes: [],
+      note: "Not booked yet — 3 nights needed between the Cebu return and flying home from Haneda (HND) on Jan 17. Tokyo proper for the finale, or near Haneda for an easy getaway? Pick one and book it."
     }
   ],
 
@@ -435,7 +433,7 @@ const TRIP_DATA = {
       done: false,
       priority: "high",
       title: "Book lodging for the final Tokyo-area stay (Jan 14–17)",
-      detail: "Confirmed not booked yet — 3 nights needed between the Cebu return flight and flying home from Haneda on Jan 17. (The Chase Travel Trip ID #1018055048 on file may or may not be related — worth a check, but don't assume it covers this. It's not the W Seattle stay; that one is Trip #1020477405.)"
+      detail: "Confirmed not booked yet — 3 nights needed between the Cebu return flight and flying home from Haneda on Jan 17. No leads on file (the old mystery Chase Trip ID turned out to be a past Savannah trip) — pick a spot and book it."
     },
     {
       done: false,
