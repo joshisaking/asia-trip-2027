@@ -472,7 +472,8 @@
       { kind: "flight", id: "jpn-ceb" },
       { kind: "hotel", id: "cebu-hotel" },
       { kind: "flight", id: "ceb-jpn" },
-      { kind: "hotel", id: "japan-final" },
+      { kind: "hotel", id: "kyoto-hotel" },
+      { kind: "hotel", id: "haneda-hotel" },
       { kind: "flight", id: "hnd-atl" },
     ];
 
