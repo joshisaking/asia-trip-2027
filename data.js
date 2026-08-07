@@ -107,9 +107,9 @@ const TRIP_DATA = {
       emoji: "⛩️",
       name: "Back to Japan — Kyoto Finale",
       dates: "Jan 14 – 17 · 3 nights",
-      tagline: "Return to Japan for the last few days — 2 nights in Kyoto booked, 1 more still needed.",
+      tagline: "Return to Japan for the last few days — Kyoto, then a night near Haneda before flying home. Fully booked!",
       weather: "🧥 Typically 37–48°F (3–9°C) in mid-January, crisp and mostly dry",
-      funFact: "Kyoto Station puts you steps from temples, shrines, and the Nishiki Market food stalls — a great low-key way to close out the trip. Still need a spot for the last night (Jan 16–17) before the Haneda flight."
+      funFact: "Kyoto Station puts you steps from temples, shrines, and the Nishiki Market food stalls — a great low-key way to close out the trip. Then it's one easy hop to Hotel JAL City Haneda for the night before the flight home."
     },
     {
       id: "homeward",
@@ -334,20 +334,24 @@ const TRIP_DATA = {
       note: "Covers only 2 of the 3 final nights — checkout is Jan 16, but the flight home doesn't leave Haneda until Jan 17. Still need lodging for the night of Jan 16–17 (Kyoto, or move to Tokyo/near Haneda for that last night)."
     },
     {
-      id: "japan-final-gap",
-      status: "needed",
+      id: "haneda-hotel",
+      status: "confirmed",
       phase: "finaljapan",
       emoji: "🏨",
-      name: "Night of Jan 16–17 — not yet booked",
-      brand: "",
-      address: "Location TBD (stay in Kyoto, or move toward Tokyo/Haneda?)",
+      name: "Hotel JAL City Haneda Tokyo (WEST WING)",
+      brand: "Okura / Nikko Hotels",
+      address: "4-4 Haneda Asahicho, Ota-ku, Tokyo 144-0042, Japan",
       checkIn:  { date: "Sat, Jan 16, 2027", time: "—" },
       checkOut: { date: "Sun, Jan 17, 2027", time: "—" },
       nights: 1,
-      room: "TBD",
-      guests: "4 guests",
-      codes: [],
-      note: "Mercure Kyoto Station (QNZHDMXT) only covers Jan 14–16. One more night needed before the Jan 17 Haneda flight — either a 3rd night in Kyoto or a move toward Haneda for an easier departure."
+      room: "Non-smoking Quad Style [MEMBER PRICE] ADVANCE 55",
+      guests: "3 adults (booking engine's occupancy label for the family of 4)",
+      codes: [
+        { label: "Confirmation #", value: "70786SG008355" },
+        { label: "Itinerary #", value: "9542B4906156" }
+      ],
+      price: "¥32,448 total, taxes/fees included",
+      note: "Replaces the earlier Mercure Haneda booking (wrong dates), which was cancelled. This one has the correct dates — closes the final lodging gap before the Jan 17 flight home. Hotel phone: 81-3-57352525."
     }
   ],
 
@@ -417,9 +421,9 @@ const TRIP_DATA = {
       title: "Check in: Mercure Kyoto Station",
       blurb: "2 nights in Kyoto to close out the trip — culture, food, and a slower pace before heading home." },
 
-    { phase: "finaljapan", date: "Sat, Jan 16", emoji: "🏨", type: "hotel-in", ref: "japan-final-gap",
-      title: "Night of Jan 16–17 — book this!",
-      blurb: "Kyoto checkout is Jan 16, but the flight home doesn't leave Haneda until Jan 17. One more night still needs a home." },
+    { phase: "finaljapan", date: "Sat, Jan 16", emoji: "🏨", type: "hotel-in", ref: "haneda-hotel",
+      title: "Check in: Hotel JAL City Haneda Tokyo",
+      blurb: "Last stop before flying home — right by the airport for an easy Jan 17 departure." },
 
     { phase: "homeward", date: "Sun, Jan 17", emoji: "🛬", type: "flight", ref: "hnd-atl",
       title: "Fly Tokyo → Atlanta — home!",
@@ -455,10 +459,10 @@ const TRIP_DATA = {
       detail: "Dusit checkout is 12 PM. Return to Japan for the final stretch (flight home departs HND Jan 17)."
     },
     {
-      done: false,
+      done: true,
       priority: "high",
       title: "Book lodging for the night of Jan 16–17",
-      detail: "Mercure Kyoto Station (Reservation QNZHDMXT) is booked for Jan 14–16 — but the flight home doesn't leave Haneda until Jan 17. One more night needed: either a 3rd night in Kyoto or a move toward Haneda for an easier departure."
+      detail: "Booked: Hotel JAL City Haneda Tokyo (WEST WING), Jan 16–17, confirmation #70786SG008355 / itinerary #9542B4906156. (An earlier Mercure Haneda booking had the wrong dates and was cancelled — this replaces it with the correct Jan 16–17 dates.)"
     },
     {
       done: true,
