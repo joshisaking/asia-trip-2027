@@ -104,12 +104,12 @@ const TRIP_DATA = {
     },
     {
       id: "finaljapan",
-      emoji: "❓",
-      name: "Back to Japan — Final Stretch",
+      emoji: "⛩️",
+      name: "Back to Japan — Kyoto Finale",
       dates: "Jan 14 – 17 · 3 nights",
-      tagline: "Return to Japan for the last few days — lodging still needs to be booked.",
-      weather: "",
-      funFact: "Nowhere to sleep yet for these 3 nights — top priority on the to-do list! Tokyo? Somewhere near Haneda for an easy departure? Time to decide and book."
+      tagline: "Return to Japan for the last few days — 2 nights in Kyoto booked, 1 more still needed.",
+      weather: "🧥 Typically 37–48°F (3–9°C) in mid-January, crisp and mostly dry",
+      funFact: "Kyoto Station puts you steps from temples, shrines, and the Nishiki Market food stalls — a great low-key way to close out the trip. Still need a spot for the last night (Jan 16–17) before the Haneda flight."
     },
     {
       id: "homeward",
@@ -248,12 +248,12 @@ const TRIP_DATA = {
       checkOut: { date: "Wed, Dec 30, 2026", time: "12:00 PM" },
       nights: 2,
       room: "The Edit — Chase Travel plan",
-      guests: "2 guests on the booking · primary: Joshua L King",
+      guests: "4 guests · primary: Joshua L King",
       codes: [
         { label: "Hotel confirmation", value: "78076207" },
         { label: "Chase Trip ID", value: "1020477405" }
       ],
-      note: "Labeled \"Seattle Stay 1\" in Chase with 2 guests — confirm how the other half of the family is covered (see To-Do). Checkout is officially noon, but JL67 departs 11:50 AM on the 30th: be out the door by ~8 AM. (Conf shows as \"78076207-\" in the Chase app.)"
+      note: "Confirmed to cover all 4 of you (the \"2 guests\" shown in Chase was just a display quirk). Checkout is officially noon, but JL67 departs 11:50 AM on the 30th: be out the door by ~8 AM. (Conf shows as \"78076207-\" in the Chase app.)"
     },
     {
       id: "karuizawa-hotel",
@@ -306,27 +306,48 @@ const TRIP_DATA = {
       room: "Dusit Club · 2 Doubles · Sea View (2 Twin)",
       guests: "4 guests",
       codes: [
-        { label: "Stay reference", value: "2508069188" }
+        { label: "Stay reference", value: "2508069188" },
+        { label: "Chase Trip ID", value: "1020377878" }
       ],
       price: "$1,991.40 total",
       cancellation: "Free cancellation until Dec 25, 2026, 6:00 PM (property time)",
-      note: "⚠️ This stay REPLACED an earlier booking (conf 2425769260, Jan 7–14) — verify the old one is cancelled so you're not double-charged. See To-Do."
+      note: "This stay replaced an earlier booking (conf 2425769260, Jan 7–14) — that old one has been verified cancelled, no double-charge risk."
     },
     {
-      id: "japan-final",
+      id: "kyoto-hotel",
+      status: "confirmed",
+      phase: "finaljapan",
+      emoji: "⛩️",
+      name: "Mercure Kyoto Station",
+      brand: "Accor / ALL",
+      address: "288 Aburanokojicho, Shimogyo-ku, 600-8231 Kyoto, Japan",
+      checkIn:  { date: "Thu, Jan 14, 2027", time: "2:00 PM" },
+      checkOut: { date: "Sat, Jan 16, 2027", time: "11:00 AM" },
+      nights: 2,
+      room: "Superior Room, 2 Single Beds (Hollywood Twin, bath tub)",
+      guests: "2 adults, 2 children",
+      codes: [
+        { label: "Reservation N°", value: "QNZHDMXT" }
+      ],
+      price: "¥24,000 total (paid at hotel)",
+      cancellation: "Free cancellation until 18:00 the day before arrival (Jan 13, 2027)",
+      note: "Covers only 2 of the 3 final nights — checkout is Jan 16, but the flight home doesn't leave Haneda until Jan 17. Still need lodging for the night of Jan 16–17 (Kyoto, or move to Tokyo/near Haneda for that last night)."
+    },
+    {
+      id: "japan-final-gap",
       status: "needed",
       phase: "finaljapan",
       emoji: "🏨",
-      name: "Final Tokyo-area stay — not yet booked",
+      name: "Night of Jan 16–17 — not yet booked",
       brand: "",
-      address: "Location TBD (Tokyo area?)",
-      checkIn:  { date: "Thu, Jan 14, 2027", time: "—" },
+      address: "Location TBD (stay in Kyoto, or move toward Tokyo/Haneda?)",
+      checkIn:  { date: "Sat, Jan 16, 2027", time: "—" },
       checkOut: { date: "Sun, Jan 17, 2027", time: "—" },
-      nights: 3,
+      nights: 1,
       room: "TBD",
       guests: "4 guests",
       codes: [],
-      note: "Not booked yet — 3 nights needed between the Cebu return and flying home from Haneda (HND) on Jan 17. Tokyo proper for the finale, or near Haneda for an easy getaway? Pick one and book it."
+      note: "Mercure Kyoto Station (QNZHDMXT) only covers Jan 14–16. One more night needed before the Jan 17 Haneda flight — either a 3rd night in Kyoto or a move toward Haneda for an easier departure."
     }
   ],
 
@@ -392,9 +413,13 @@ const TRIP_DATA = {
       title: "Fly Cebu → Japan",
       blurb: "STILL NEEDS BOOKING — return leg to Japan for the final stretch." },
 
-    { phase: "finaljapan", date: "Jan 14 – 17", emoji: "🏨", type: "hotel-in", ref: "japan-final",
-      title: "Final Tokyo-area stay — book this!",
-      blurb: "3 nights, not yet booked. Needs to be sorted before flying home from Haneda on Jan 17." },
+    { phase: "finaljapan", date: "Jan 14 – 16", emoji: "⛩️", type: "hotel-in", ref: "kyoto-hotel",
+      title: "Check in: Mercure Kyoto Station",
+      blurb: "2 nights in Kyoto to close out the trip — culture, food, and a slower pace before heading home." },
+
+    { phase: "finaljapan", date: "Sat, Jan 16", emoji: "🏨", type: "hotel-in", ref: "japan-final-gap",
+      title: "Night of Jan 16–17 — book this!",
+      blurb: "Kyoto checkout is Jan 16, but the flight home doesn't leave Haneda until Jan 17. One more night still needs a home." },
 
     { phase: "homeward", date: "Sun, Jan 17", emoji: "🛬", type: "flight", ref: "hnd-atl",
       title: "Fly Tokyo → Atlanta — home!",
@@ -412,10 +437,10 @@ const TRIP_DATA = {
       detail: "The W Seattle is now booked for Dec 28–30 (check-in 4:00 PM), so book the flight to land Monday afternoon/evening. JL67 departs SEA at 11:50 AM on the 30th."
     },
     {
-      done: false,
+      done: true,
       priority: "medium",
       title: "Confirm the Seattle W booking covers all 4",
-      detail: "Chase shows this as \"Seattle Stay 1\" with 2 guests (primary: Joshua, Trip #1020477405). If there's a \"Seattle Stay 2\" for the second room, send its details over to add here — if not, adjust the booking."
+      detail: "Confirmed: the one booking (Trip #1020477405 / conf 78076207) covers all 4 of you. The \"2 guests\" shown in Chase was just a display quirk."
     },
     {
       done: false,
@@ -432,20 +457,20 @@ const TRIP_DATA = {
     {
       done: false,
       priority: "high",
-      title: "Book lodging for the final Tokyo-area stay (Jan 14–17)",
-      detail: "Confirmed not booked yet — 3 nights needed between the Cebu return flight and flying home from Haneda on Jan 17. No leads on file (the old mystery Chase Trip ID turned out to be a past Savannah trip) — pick a spot and book it."
+      title: "Book lodging for the night of Jan 16–17",
+      detail: "Mercure Kyoto Station (Reservation QNZHDMXT) is booked for Jan 14–16 — but the flight home doesn't leave Haneda until Jan 17. One more night needed: either a 3rd night in Kyoto or a move toward Haneda for an easier departure."
     },
     {
-      done: false,
+      done: true,
       priority: "high",
       title: "Verify the OLD Cebu booking is cancelled",
-      detail: "Superseded booking: conf 2425769260 / Trip ID 1015472871 (Jan 7–14). The new Dusit stay is 2508069188. Make sure the old one is cancelled to avoid a double charge. (New booking has free cancellation until Dec 25, 2026, 6 PM property time.)"
+      detail: "Confirmed cancelled. Superseded booking: conf 2425769260 / Trip ID 1015472871 (Jan 7–14). Current stay is Dusit Thani, conf 2508069188 / Chase Trip ID 1020377878 — no double-charge risk."
     },
     {
-      done: false,
+      done: true,
       priority: "medium",
       title: "Confirm Alaska codes for Christina & Leila (SEA→NRT)",
-      detail: "Codes on file: NQHBRY / AAN6Q9, e-tickets 0272137089357 & 0272137089358. Double-check with Alaska that both passengers are ticketed on JL67, Dec 30."
+      detail: "Confirmed via Alaska confirmation email: NQHBRY / AAN6Q9, e-tickets 0272137089357 & 0272137089358, both ticketed on JL67, Dec 30, Premium Economy."
     }
   ],
 
