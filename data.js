@@ -409,7 +409,7 @@ const TRIP_DATA = {
       done: false,
       priority: "high",
       title: "Book flight: Atlanta → Seattle (Mon, Dec 28)",
-      detail: "The W Seattle is now booked for Dec 28–30 (check-in 4:00 PM), so book the flight to land Monday afternoon/evening. JL67 departs SEA at 11:50 AM on the 30th."
+      detail: "The W Seattle is now booked for Dec 28–30 (check-in 4:00 PM), so book the flight to land Monday afternoon/evening. JL67 departs SEA at 11:50 AM on the 30th. Award strategy: keep this OFF Atmos — Delta (34.6K pp/138.4K for 4) and Atmos (37.5K pp/150K for 4) are both weak redemptions for a domestic positioning flight, and the two Global Companion Awards are worth far more spent on the Asia legs below. Once the 100K Chase UR bonus posts, compare (1) cash price for 4, (2) Chase Travel cash-equivalent pricing, (3) Delta/Alaska partner award space, and (4) Delta availability via Flying Blue (Chase and Bilt both transfer 1:1) — book whichever is cheapest. Leave the 100K Chase UR as UR; don't convert it just to cover this flight."
     },
     {
       done: false,
@@ -420,14 +420,20 @@ const TRIP_DATA = {
     {
       done: false,
       priority: "high",
-      title: "Book flight: Japan → Cebu (Fri, Jan 8)",
-      detail: "Yokohama checkout and Cebu check-in are both Jan 8 — this flight is the hinge of the whole trip. ~5h nonstop options exist from NRT/HND."
+      title: "Book flight: Japan → Cebu (Fri, Jan 8) — Atmos + Global Companion Award",
+      detail: "Yokohama checkout and Cebu check-in are both Jan 8 — this flight is the hinge of the whole trip. Award strategy: book via Alaska Atmos Rewards at 25K pp economy, and apply Christina's 25K Global Companion Award to make one passenger free — 75K Atmos total for all 4 (25K + 0K + 25K + 25K) instead of 100K. Don't transfer Bilt → Atmos until the 80K Summit SUB and this companion certificate actually post and NRT→CEB 25K space is reconfirmed directly with Atmos (partner award space is capacity-controlled — treat seats.aero as a lead, not guaranteed inventory)."
     },
     {
       done: false,
       priority: "high",
-      title: "Book flight: Cebu → Japan (Thu, Jan 14)",
-      detail: "Dusit checkout is 12 PM. Return to Japan for the final stretch (flight home departs HND Jan 17)."
+      title: "Book flight: Cebu → Japan (Thu, Jan 14) — Atmos + Global Companion Award",
+      detail: "Dusit checkout is 12 PM. Return to Japan for the final stretch (flight home departs HND Jan 17). Award strategy: book via Atmos at 25K pp economy (the strategy pencils this out to KIX/Osaka — confirm the exact arrival airport alongside the Jan 14–17 lodging decision). Apply the forthcoming second 25K Global Companion Award to bring this leg to 75K Atmos total for 4, same structure as NRT→CEB. The two certificates belong to different cardholders (Joshua's and Christina's), so plan which certificate books which flight around whose account it's issued to. Stick to economy — business class runs 50K pp (175K/leg even with a cert, 350K for both flights) vs. 150K total in economy for both Asia legs combined; save the extra 200K for future long-haul travel."
+    },
+    {
+      done: false,
+      priority: "medium",
+      title: "Hold off on Bilt → Atmos point transfers",
+      detail: "Funding picture once the Summit bonus posts: ~86K native Atmos (existing balances + 80K SUB) + ~64K transferred from Bilt (1:1, ~80K currently available) = 150K, enough for both 75K Asia awards. Don't transfer anything yet — wait for the 80K Summit bonus and the second Global Companion Award to post, reconfirm the NRT→CEB and CEB→KIX 25K Atmos award space is still bookable, then transfer only what's needed to ticket it. This leaves ~16K Bilt plus the full 100K Chase UR bonus free for ATL→SEA or future travel."
     },
     {
       done: false,
@@ -453,6 +459,7 @@ const TRIP_DATA = {
      GOOD TO KNOW — stable reference facts for the quick-reference section.
      ========================================================================== */
   goodToKnow: [
+    { emoji: "💳", title: "Asia flights: award strategy", detail: "NRT→CEB and CEB→KIX: book Atmos economy (25K pp) and apply one 25K Global Companion Award to each — 75K/flight for all 4 instead of 100K, extracting the full 50K value of both certificates. Skip business (50K pp; 175K/flight even with a cert). Fund the ~64K Atmos shortfall from Bilt (1:1) only after the Summit bonus + 2nd companion award post and space is reconfirmed. Keep ATL→SEA off Atmos — compare cash, Delta SkyMiles, and Flying Blue once the 100K Chase bonus lands. See To-Do for the step-by-step." },
     { emoji: "🕐", title: "Time zones", detail: "Japan is 14 hrs ahead of Atlanta (UTC+9 vs UTC−5). Cebu is 13 hrs ahead (UTC+8) — 1 hr behind Japan." },
     { emoji: "💴", title: "Money", detail: "Japan: yen (¥) — cash still matters at small spots. Philippines: peso (₱). Cards fine at the resort." },
     { emoji: "🔌", title: "Plugs & power", detail: "Japan: Type A (US-style 2-prong), 100V — US plugs fit. Philippines: 220V, Type A/B/C — check chargers for '100–240V'." },
