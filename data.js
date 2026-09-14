@@ -29,10 +29,8 @@ const TRIP_DATA = {
     title: "The Kings Take Asia",
     subtitle: "Atlanta → Seattle → Japan → Philippines → home again",
     dateRange: "Dec 28, 2026 – Jan 17, 2027",
-    // Trip start: the day everyone leaves for Seattle (ATL→SEA flight still TBD,
-    // so this counts down to the start of that day, Atlanta time). Once the
-    // flight is booked, swap in its exact departure time here.
-    departureISO: "2026-12-28T00:01:00-05:00",
+    // Trip start: DL714 ATL→SEA departs 9:15 PM Atlanta time on Dec 28.
+    departureISO: "2026-12-28T21:15:00-05:00",
     // Rough end of trip (evening of the day they land back home, Atlanta/Eastern time).
     tripEndISO: "2027-01-18T00:00:00-05:00",
     tripDays: 21,
@@ -128,18 +126,29 @@ const TRIP_DATA = {
   flights: [
     {
       id: "atl-sea",
-      status: "needed",
+      status: "confirmed",
       phase: "prelude",
       from: { code: "ATL", city: "Atlanta (home)" },
       to:   { code: "SEA", city: "Seattle" },
-      airline: "Alaska Airlines (planned)",
-      flightNo: "—",
-      cabin: "—",
-      depart: { date: "Mon, Dec 28, 2026", time: "TBD", tz: "Atlanta" },
-      arrive: { date: "Mon, Dec 28, 2026", time: "TBD", tz: "Seattle" },
-      duration: "≈ 5h 45m",
-      note: "The very first leg of the trip. The W Seattle is booked for Dec 28 (check-in 4:00 PM), so aim to land Monday afternoon/evening. Book this!",
-      reservations: []
+      airline: "Delta Air Lines",
+      flightNo: "DL714",
+      aircraft: "—",
+      cabin: "Delta Main Classic",
+      depart: { date: "Mon, Dec 28, 2026", time: "9:15 PM", tz: "Atlanta" },
+      arrive: { date: "Mon, Dec 28, 2026", time: "11:55 PM", tz: "Seattle" },
+      duration: "5h 40m · nonstop",
+      note: "The very first leg of the trip. Lands late (11:55 PM) — the W Seattle check-in is 4:00 PM but a late arrival is fine, the room's booked for Dec 28. Seat assignments weren't guaranteed at booking; check in for seats.",
+      reservations: [
+        {
+          via: "Delta Air Lines",
+          passengers: ["Joshua King", "Christina King", "Lucas King", "Leila King"],
+          codes: [
+            { label: "Airline reference", value: "G7A7HM" },
+            { label: "Agency reference", value: "DLUFHX" },
+            { label: "Trip ID", value: "1029332652" }
+          ]
+        }
+      ]
     },
     {
       id: "sea-nrt",
@@ -363,7 +372,7 @@ const TRIP_DATA = {
   timeline: [
     { phase: "prelude", date: "Mon, Dec 28", emoji: "🧳", type: "flight", ref: "atl-sea",
       title: "Fly Atlanta → Seattle",
-      blurb: "STILL NEEDS BOOKING — the opening leg. The W is holding the beds from Monday, so land by afternoon/evening." },
+      blurb: "DL714, 9:15 PM–11:55 PM. Late arrival into Seattle, but the W Seattle room is booked for Dec 28 regardless." },
 
     { phase: "prelude", date: "Mon, Dec 28", emoji: "🎸", type: "hotel-in", ref: "seattle-w",
       title: "Check in: W Seattle",
@@ -435,10 +444,10 @@ const TRIP_DATA = {
      ========================================================================== */
   todos: [
     {
-      done: false,
+      done: true,
       priority: "high",
       title: "Book flight: Atlanta → Seattle (Mon, Dec 28)",
-      detail: "The W Seattle is now booked for Dec 28–30 (check-in 4:00 PM), so book the flight to land Monday afternoon/evening. JL67 departs SEA at 11:50 AM on the 30th."
+      detail: "Booked: Delta DL714, departs ATL 9:15 PM, arrives SEA 11:55 PM. Airline ref G7A7HM / agency ref DLUFHX / Trip ID 1029332652. Seats weren't assigned at booking — check in for seats."
     },
     {
       done: true,
