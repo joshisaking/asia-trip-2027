@@ -29,10 +29,8 @@ const TRIP_DATA = {
     title: "The Kings Take Asia",
     subtitle: "Atlanta → Seattle → Japan → Philippines → home again",
     dateRange: "Dec 28, 2026 – Jan 17, 2027",
-    // Trip start: the day everyone leaves for Seattle (ATL→SEA flight still TBD,
-    // so this counts down to the start of that day, Atlanta time). Once the
-    // flight is booked, swap in its exact departure time here.
-    departureISO: "2026-12-28T00:01:00-05:00",
+    // Trip start: DL714 ATL→SEA departs 9:15 PM Atlanta time on Dec 28.
+    departureISO: "2026-12-28T21:15:00-05:00",
     // Rough end of trip (evening of the day they land back home, Atlanta/Eastern time).
     tripEndISO: "2027-01-18T00:00:00-05:00",
     tripDays: 21,
@@ -104,12 +102,12 @@ const TRIP_DATA = {
     },
     {
       id: "finaljapan",
-      emoji: "❓",
-      name: "Back to Japan — Final Stretch",
+      emoji: "⛩️",
+      name: "Back to Japan — Kyoto Finale",
       dates: "Jan 14 – 17 · 3 nights",
-      tagline: "Return to Japan for the last few days — lodging still needs to be booked.",
-      weather: "",
-      funFact: "Nowhere to sleep yet for these 3 nights — top priority on the to-do list! Tokyo? Somewhere near Haneda for an easy departure? Time to decide and book."
+      tagline: "Return to Japan for the last few days — Kyoto, then a night near Haneda before flying home. Fully booked!",
+      weather: "🧥 Typically 37–48°F (3–9°C) in mid-January, crisp and mostly dry",
+      funFact: "Kyoto Station puts you steps from temples, shrines, and the Nishiki Market food stalls — a great low-key way to close out the trip. Then it's one easy hop to Hotel JAL City Haneda for the night before the flight home."
     },
     {
       id: "homeward",
@@ -128,18 +126,29 @@ const TRIP_DATA = {
   flights: [
     {
       id: "atl-sea",
-      status: "needed",
+      status: "confirmed",
       phase: "prelude",
       from: { code: "ATL", city: "Atlanta (home)" },
       to:   { code: "SEA", city: "Seattle" },
-      airline: "Alaska Airlines (planned)",
-      flightNo: "—",
-      cabin: "—",
-      depart: { date: "Mon, Dec 28, 2026", time: "TBD", tz: "Atlanta" },
-      arrive: { date: "Mon, Dec 28, 2026", time: "TBD", tz: "Seattle" },
-      duration: "≈ 5h 45m",
-      note: "The very first leg of the trip. The W Seattle is booked for Dec 28 (check-in 4:00 PM), so aim to land Monday afternoon/evening. Book this!",
-      reservations: []
+      airline: "Delta Air Lines",
+      flightNo: "DL714",
+      aircraft: "—",
+      cabin: "Delta Main Classic",
+      depart: { date: "Mon, Dec 28, 2026", time: "9:15 PM", tz: "Atlanta" },
+      arrive: { date: "Mon, Dec 28, 2026", time: "11:55 PM", tz: "Seattle" },
+      duration: "5h 40m · nonstop",
+      note: "The very first leg of the trip. Lands late (11:55 PM) — the W Seattle check-in is 4:00 PM but a late arrival is fine, the room's booked for Dec 28. Seat assignments weren't guaranteed at booking; check in for seats.",
+      reservations: [
+        {
+          via: "Delta Air Lines",
+          passengers: ["Joshua King", "Christina King", "Lucas King", "Leila King"],
+          codes: [
+            { label: "Airline reference", value: "G7A7HM" },
+            { label: "Agency reference", value: "DLUFHX" },
+            { label: "Trip ID", value: "1029332652" }
+          ]
+        }
+      ]
     },
     {
       id: "sea-nrt",
@@ -257,12 +266,12 @@ const TRIP_DATA = {
       checkOut: { date: "Wed, Dec 30, 2026", time: "12:00 PM" },
       nights: 2,
       room: "The Edit — Chase Travel plan",
-      guests: "2 guests on the booking · primary: Joshua L King",
+      guests: "4 guests · primary: Joshua L King",
       codes: [
         { label: "Hotel confirmation", value: "78076207" },
         { label: "Chase Trip ID", value: "1020477405" }
       ],
-      note: "Labeled \"Seattle Stay 1\" in Chase with 2 guests — confirm how the other half of the family is covered (see To-Do). Checkout is officially noon, but JL67 departs 11:50 AM on the 30th: be out the door by ~8 AM. (Conf shows as \"78076207-\" in the Chase app.)"
+      note: "Confirmed to cover all 4 of you (the \"2 guests\" shown in Chase was just a display quirk). Checkout is officially noon, but JL67 departs 11:50 AM on the 30th: be out the door by ~8 AM. (Conf shows as \"78076207-\" in the Chase app.)"
     },
     {
       id: "karuizawa-hotel",
@@ -315,27 +324,52 @@ const TRIP_DATA = {
       room: "Dusit Club · 2 Doubles · Sea View (2 Twin)",
       guests: "4 guests",
       codes: [
-        { label: "Stay reference", value: "2508069188" }
+        { label: "Stay reference", value: "2508069188" },
+        { label: "Chase Trip ID", value: "1020377878" }
       ],
       price: "$1,991.40 total",
       cancellation: "Free cancellation until Dec 25, 2026, 6:00 PM (property time)",
-      note: "⚠️ This stay REPLACED an earlier booking (conf 2425769260, Jan 7–14) — verify the old one is cancelled so you're not double-charged. See To-Do."
+      note: "This stay replaced an earlier booking (conf 2425769260, Jan 7–14) — that old one has been verified cancelled, no double-charge risk."
     },
     {
-      id: "japan-final",
-      status: "needed",
+      id: "kyoto-hotel",
+      status: "confirmed",
+      phase: "finaljapan",
+      emoji: "⛩️",
+      name: "Mercure Kyoto Station",
+      brand: "Accor / ALL",
+      address: "288 Aburanokojicho, Shimogyo-ku, 600-8231 Kyoto, Japan",
+      checkIn:  { date: "Thu, Jan 14, 2027", time: "2:00 PM" },
+      checkOut: { date: "Sat, Jan 16, 2027", time: "11:00 AM" },
+      nights: 2,
+      room: "Superior Room, 2 Single Beds (Hollywood Twin, bath tub)",
+      guests: "2 adults, 2 children",
+      codes: [
+        { label: "Reservation N°", value: "QNZHDMXT" }
+      ],
+      price: "¥24,000 total (paid at hotel)",
+      cancellation: "Free cancellation until 18:00 the day before arrival (Jan 13, 2027)",
+      note: "Covers only 2 of the 3 final nights — checkout is Jan 16, but the flight home doesn't leave Haneda until Jan 17. Still need lodging for the night of Jan 16–17 (Kyoto, or move to Tokyo/near Haneda for that last night)."
+    },
+    {
+      id: "haneda-hotel",
+      status: "confirmed",
       phase: "finaljapan",
       emoji: "🏨",
-      name: "Final Tokyo-area stay — not yet booked",
-      brand: "",
-      address: "Location TBD (Tokyo area?)",
-      checkIn:  { date: "Thu, Jan 14, 2027", time: "—" },
+      name: "Hotel JAL City Haneda Tokyo (WEST WING)",
+      brand: "Okura / Nikko Hotels",
+      address: "4-4 Haneda Asahicho, Ota-ku, Tokyo 144-0042, Japan",
+      checkIn:  { date: "Sat, Jan 16, 2027", time: "—" },
       checkOut: { date: "Sun, Jan 17, 2027", time: "—" },
-      nights: 3,
-      room: "TBD",
-      guests: "4 guests",
-      codes: [],
-      note: "Not booked yet — 3 nights needed between the Cebu return and flying home from Haneda (HND) on Jan 17. Tokyo proper for the finale, or near Haneda for an easy getaway? Pick one and book it."
+      nights: 1,
+      room: "Non-smoking Quad Style [MEMBER PRICE] ADVANCE 55",
+      guests: "3 adults (booking engine's occupancy label for the family of 4)",
+      codes: [
+        { label: "Confirmation #", value: "70786SG008355" },
+        { label: "Itinerary #", value: "9542B4906156" }
+      ],
+      price: "¥32,448 total, taxes/fees included",
+      note: "Replaces the earlier Mercure Haneda booking (wrong dates), which was cancelled. This one has the correct dates — closes the final lodging gap before the Jan 17 flight home. Hotel phone: 81-3-57352525."
     }
   ],
 
@@ -347,7 +381,7 @@ const TRIP_DATA = {
   timeline: [
     { phase: "prelude", date: "Mon, Dec 28", emoji: "🧳", type: "flight", ref: "atl-sea",
       title: "Fly Atlanta → Seattle",
-      blurb: "STILL NEEDS BOOKING — the opening leg. The W is holding the beds from Monday, so land by afternoon/evening." },
+      blurb: "DL714, 9:15 PM–11:55 PM. Late arrival into Seattle, but the W Seattle room is booked for Dec 28 regardless." },
 
     { phase: "prelude", date: "Mon, Dec 28", emoji: "🎸", type: "hotel-in", ref: "seattle-w",
       title: "Check in: W Seattle",
@@ -401,9 +435,13 @@ const TRIP_DATA = {
       title: "Fly Cebu → Osaka",
       blurb: "PR410, nonstop, 8:25 AM–1:35 PM. Booked! Lands at KIX, not Tokyo — worth factoring into the final lodging pick." },
 
-    { phase: "finaljapan", date: "Jan 14 – 17", emoji: "🏨", type: "hotel-in", ref: "japan-final",
-      title: "Final Tokyo-area stay — book this!",
-      blurb: "3 nights, not yet booked. Needs to be sorted before flying home from Haneda on Jan 17." },
+    { phase: "finaljapan", date: "Jan 14 – 16", emoji: "⛩️", type: "hotel-in", ref: "kyoto-hotel",
+      title: "Check in: Mercure Kyoto Station",
+      blurb: "2 nights in Kyoto to close out the trip — culture, food, and a slower pace before heading home." },
+
+    { phase: "finaljapan", date: "Sat, Jan 16", emoji: "🏨", type: "hotel-in", ref: "haneda-hotel",
+      title: "Check in: Hotel JAL City Haneda Tokyo",
+      blurb: "Last stop before flying home — right by the airport for an easy Jan 17 departure." },
 
     { phase: "homeward", date: "Sun, Jan 17", emoji: "🛬", type: "flight", ref: "hnd-atl",
       title: "Fly Tokyo → Atlanta — home!",
@@ -415,16 +453,16 @@ const TRIP_DATA = {
      ========================================================================== */
   todos: [
     {
-      done: false,
+      done: true,
       priority: "high",
       title: "Book flight: Atlanta → Seattle (Mon, Dec 28)",
-      detail: "The W Seattle is now booked for Dec 28–30 (check-in 4:00 PM), so book the flight to land Monday afternoon/evening. JL67 departs SEA at 11:50 AM on the 30th. Award strategy: keep this OFF Atmos — Delta (34.6K pp/138.4K for 4) and Atmos (37.5K pp/150K for 4) are both weak redemptions for a domestic positioning flight, and the two Global Companion Awards are worth far more spent on the Asia legs below. Once the 100K Chase UR bonus posts, compare (1) cash price for 4, (2) Chase Travel cash-equivalent pricing, (3) Delta/Alaska partner award space, and (4) Delta availability via Flying Blue (Chase and Bilt both transfer 1:1) — book whichever is cheapest. Leave the 100K Chase UR as UR; don't convert it just to cover this flight."
+      detail: "Booked: Delta DL714, departs ATL 9:15 PM, arrives SEA 11:55 PM. Airline ref G7A7HM / agency ref DLUFHX / Trip ID 1029332652. Seats weren't assigned at booking — check in for seats."
     },
     {
-      done: false,
+      done: true,
       priority: "medium",
       title: "Confirm the Seattle W booking covers all 4",
-      detail: "Chase shows this as \"Seattle Stay 1\" with 2 guests (primary: Joshua, Trip #1020477405). If there's a \"Seattle Stay 2\" for the second room, send its details over to add here — if not, adjust the booking."
+      detail: "Confirmed: the one booking (Trip #1020477405 / conf 78076207) covers all 4 of you. The \"2 guests\" shown in Chase was just a display quirk."
     },
     {
       done: false,
@@ -445,22 +483,22 @@ const TRIP_DATA = {
       detail: "CEB→KIX ended up booked with Bilt points directly, so only the NRT→CEB leg still needs the Atmos + Global Companion Award play (75K Atmos for 4). Funding picture once the Summit bonus posts: ~86K native Atmos (existing balances + 80K SUB), plenty for that one 75K award without touching Bilt. Don't transfer anything yet — wait for the 80K Summit bonus and Christina's Global Companion Award to post, reconfirm NRT→CEB 25K Atmos award space is still bookable, then transfer only if the native balance falls short. This leaves Bilt plus the full 100K Chase UR bonus free for ATL→SEA or future travel — including the now-unused second companion certificate."
     },
     {
-      done: false,
+      done: true,
       priority: "high",
-      title: "Book lodging for the final Tokyo-area stay (Jan 14–17)",
-      detail: "Confirmed not booked yet — 3 nights needed between the Cebu return flight and flying home from Haneda on Jan 17. No leads on file (the old mystery Chase Trip ID turned out to be a past Savannah trip) — pick a spot and book it."
+      title: "Book lodging for the night of Jan 16–17",
+      detail: "Booked: Hotel JAL City Haneda Tokyo (WEST WING), Jan 16–17, confirmation #70786SG008355 / itinerary #9542B4906156. (An earlier Mercure Haneda booking had the wrong dates and was cancelled — this replaces it with the correct Jan 16–17 dates.)"
     },
     {
-      done: false,
+      done: true,
       priority: "high",
       title: "Verify the OLD Cebu booking is cancelled",
-      detail: "Superseded booking: conf 2425769260 / Trip ID 1015472871 (Jan 7–14). The new Dusit stay is 2508069188. Make sure the old one is cancelled to avoid a double charge. (New booking has free cancellation until Dec 25, 2026, 6 PM property time.)"
+      detail: "Confirmed cancelled. Superseded booking: conf 2425769260 / Trip ID 1015472871 (Jan 7–14). Current stay is Dusit Thani, conf 2508069188 / Chase Trip ID 1020377878 — no double-charge risk."
     },
     {
-      done: false,
+      done: true,
       priority: "medium",
       title: "Confirm Alaska codes for Christina & Leila (SEA→NRT)",
-      detail: "Codes on file: NQHBRY / AAN6Q9, e-tickets 0272137089357 & 0272137089358. Double-check with Alaska that both passengers are ticketed on JL67, Dec 30."
+      detail: "Confirmed via Alaska confirmation email: NQHBRY / AAN6Q9, e-tickets 0272137089357 & 0272137089358, both ticketed on JL67, Dec 30, Premium Economy."
     }
   ],
 
