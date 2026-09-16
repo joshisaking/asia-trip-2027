@@ -202,18 +202,27 @@ const TRIP_DATA = {
     },
     {
       id: "ceb-jpn",
-      status: "needed",
+      status: "confirmed",
       phase: "finaljapan",
       from: { code: "CEB", city: "Cebu" },
-      to:   { code: "TYO", city: "Japan · airport TBD" },
-      airline: "TBD",
-      flightNo: "—",
-      cabin: "—",
-      depart: { date: "Thu, Jan 14, 2027", time: "TBD", tz: "Philippines" },
-      arrive: { date: "Thu, Jan 14, 2027", time: "TBD", tz: "Japan" },
-      duration: "≈ 5h nonstop",
-      note: "Needed for Jan 14: Dusit Thani checkout is at noon. Book this!",
-      reservations: []
+      to:   { code: "KIX", city: "Osaka Kansai" },
+      airline: "Philippine Airlines",
+      flightNo: "PR410",
+      cabin: "Economy",
+      depart: { date: "Thu, Jan 14, 2027", time: "8:25 AM", tz: "Philippines" },
+      arrive: { date: "Thu, Jan 14, 2027", time: "1:35 PM", tz: "Japan" },
+      duration: "4h 10m · nonstop",
+      note: "Booked via Bilt (points redemption, not the Atmos companion-award strategy). Arrives into KIX/Osaka, not Tokyo — factor that into the Jan 14–17 lodging decision. Dusit Thani checkout is at noon, same day.",
+      reservations: [
+        {
+          via: "Bilt Travel Portal",
+          passengers: ["Joshua King", "Christina King", "Lucas King", "Leila King"],
+          codes: [
+            { label: "Airline confirmation", value: "CH4YSU" }
+          ],
+          note: "74,208 Bilt points redeemed · $0.00 billed to card."
+        }
+      ]
     },
     {
       id: "hnd-atl",
@@ -423,8 +432,8 @@ const TRIP_DATA = {
       blurb: "One last mango shake, then back to Japan." },
 
     { phase: "finaljapan", date: "Thu, Jan 14", emoji: "✈️", type: "flight", ref: "ceb-jpn",
-      title: "Fly Cebu → Japan",
-      blurb: "STILL NEEDS BOOKING — return leg to Japan for the final stretch." },
+      title: "Fly Cebu → Osaka",
+      blurb: "PR410, nonstop, 8:25 AM–1:35 PM. Booked! Lands at KIX, not Tokyo — worth factoring into the final lodging pick." },
 
     { phase: "finaljapan", date: "Jan 14 – 16", emoji: "⛩️", type: "hotel-in", ref: "kyoto-hotel",
       title: "Check in: Mercure Kyoto Station",
@@ -458,14 +467,20 @@ const TRIP_DATA = {
     {
       done: false,
       priority: "high",
-      title: "Book flight: Japan → Cebu (Fri, Jan 8)",
-      detail: "Yokohama checkout and Cebu check-in are both Jan 8 — this flight is the hinge of the whole trip. ~5h nonstop options exist from NRT/HND."
+      title: "Book flight: Japan → Cebu (Fri, Jan 8) — Atmos + Global Companion Award",
+      detail: "Yokohama checkout and Cebu check-in are both Jan 8 — this flight is the hinge of the whole trip. Award strategy: book via Alaska Atmos Rewards at 25K pp economy, and apply Christina's 25K Global Companion Award to make one passenger free — 75K Atmos total for all 4 (25K + 0K + 25K + 25K) instead of 100K. Don't transfer Bilt → Atmos until the 80K Summit SUB and this companion certificate actually post and NRT→CEB 25K space is reconfirmed directly with Atmos (partner award space is capacity-controlled — treat seats.aero as a lead, not guaranteed inventory)."
+    },
+    {
+      done: true,
+      priority: "high",
+      title: "Book flight: Cebu → Japan (Thu, Jan 14)",
+      detail: "Booked via Bilt (PR410, Philippine Airlines, nonstop CEB→KIX, 8:25 AM–1:35 PM, conf CH4YSU, 74,208 points, $0 billed) — went a different route than the planned Atmos + Global Companion Award strategy, so that second companion certificate is still available for a future flight. Lands at Osaka (KIX), not Tokyo — factor that into the Jan 14–17 lodging pick."
     },
     {
       done: false,
-      priority: "high",
-      title: "Book flight: Cebu → Japan (Thu, Jan 14)",
-      detail: "Dusit checkout is 12 PM. Return to Japan for the final stretch (flight home departs HND Jan 17)."
+      priority: "medium",
+      title: "Hold off on Bilt → Atmos point transfers",
+      detail: "CEB→KIX ended up booked with Bilt points directly, so only the NRT→CEB leg still needs the Atmos + Global Companion Award play (75K Atmos for 4). Funding picture once the Summit bonus posts: ~86K native Atmos (existing balances + 80K SUB), plenty for that one 75K award without touching Bilt. Don't transfer anything yet — wait for the 80K Summit bonus and Christina's Global Companion Award to post, reconfirm NRT→CEB 25K Atmos award space is still bookable, then transfer only if the native balance falls short. This leaves Bilt plus the full 100K Chase UR bonus free for ATL→SEA or future travel — including the now-unused second companion certificate."
     },
     {
       done: true,
@@ -491,6 +506,7 @@ const TRIP_DATA = {
      GOOD TO KNOW — stable reference facts for the quick-reference section.
      ========================================================================== */
   goodToKnow: [
+    { emoji: "💳", title: "Asia flights: award strategy", detail: "CEB→KIX is booked (Bilt points, PR410). NRT→CEB is still open: book Atmos economy (25K pp) and apply Christina's 25K Global Companion Award — 75K for all 4 instead of 100K. Skip business (50K pp; 175K even with a cert). Fund any Atmos shortfall from Bilt (1:1) only after the Summit bonus posts and space is reconfirmed. Keep ATL→SEA off Atmos — compare cash, Delta SkyMiles, and Flying Blue once the 100K Chase bonus lands. See To-Do for the step-by-step." },
     { emoji: "🕐", title: "Time zones", detail: "Japan is 14 hrs ahead of Atlanta (UTC+9 vs UTC−5). Cebu is 13 hrs ahead (UTC+8) — 1 hr behind Japan." },
     { emoji: "💴", title: "Money", detail: "Japan: yen (¥) — cash still matters at small spots. Philippines: peso (₱). Cards fine at the resort." },
     { emoji: "🔌", title: "Plugs & power", detail: "Japan: Type A (US-style 2-prong), 100V — US plugs fit. Philippines: 220V, Type A/B/C — check chargers for '100–240V'." },
