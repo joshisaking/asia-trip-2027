@@ -410,6 +410,10 @@ const TRIP_DATA = {
       title: "Early checkout → SEA airport",
       blurb: "JL67 leaves at 11:50 AM — be out the door by ~8 AM for bags, trains, and international check-in." },
 
+    { phase: "wheelsup", date: "Wed, Dec 30", emoji: "🛋️", type: "moment",
+      title: "Use the Alaska lounge passes before boarding",
+      blurb: "Don't forget the Alaska lounge passes — grab a bite and relax before the ~10hr flight to Tokyo. Check the SEA terminal map for the nearest Alaska Lounge to the JL67 gate." },
+
     { phase: "wheelsup", date: "Wed, Dec 30", emoji: "🛫", type: "flight", ref: "sea-nrt",
       title: "Fly Seattle → Tokyo",
       blurb: "The big one. Wheels up 11:50 AM on JAL 67 — next stop, Japan." },
