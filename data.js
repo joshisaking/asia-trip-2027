@@ -187,18 +187,37 @@ const TRIP_DATA = {
     },
     {
       id: "jpn-ceb",
-      status: "needed",
+      status: "confirmed",
       phase: "cebu",
-      from: { code: "TYO", city: "Japan · airport TBD" },
+      from: { code: "NRT", city: "Tokyo Narita" },
       to:   { code: "CEB", city: "Cebu" },
-      airline: "TBD",
-      flightNo: "—",
-      cabin: "—",
-      depart: { date: "Fri, Jan 8, 2027", time: "TBD", tz: "Japan" },
-      arrive: { date: "Fri, Jan 8, 2027", time: "TBD", tz: "Philippines" },
-      duration: "≈ 5h nonstop",
-      note: "Needed for Jan 8: Yokohama checkout and Cebu check-in are the same day. Book this!",
-      reservations: []
+      airline: "Philippine Airlines",
+      flightNo: "PR429 / PR2845",
+      cabin: "Economy",
+      depart: { date: "Fri, Jan 8, 2027", time: "9:35 PM", tz: "Japan" },
+      arrive: { date: "Sat, Jan 9, 2027", time: "6:25 AM", tz: "Philippines" },
+      duration: "9h 50m total (6h 50m flying) · 1 connection",
+      note: "One-stop via Manila (MNL), NOT nonstop: PR429 NRT→MNL 9:35 PM–2:00 AM, then a 3-hour layover, then PR2845 MNL→CEB 5:00 AM–6:25 AM. Booked via Atmos Rewards, split across two separate reservations to use each parent's Global Companion Award. Yokohama checkout is Jan 8, so head straight to Narita.",
+      reservations: [
+        {
+          via: "Alaska Airlines (Atmos Rewards) — Joshua's account",
+          passengers: ["Joshua King", "Lucas King"],
+          codes: [
+            { label: "Alaska confirmation", value: "GCQIGQ" },
+            { label: "Philippine Airlines confirmation", value: "CNZV7C" }
+          ],
+          note: "25,000 Atmos points redeemed (Joshua) + Global Companion Award applied to Lucas (code GLCOMP25KSRMR164216). $92.00 in taxes/fees charged."
+        },
+        {
+          via: "Alaska Airlines (Atmos Rewards) — Christina's account",
+          passengers: ["Christina King", "Leila King"],
+          codes: [
+            { label: "Alaska confirmation", value: "SNLNQQ" },
+            { label: "Philippine Airlines confirmation", value: "CO3R6W" }
+          ],
+          note: "25,000 Atmos points redeemed (Christina) + Global Companion Award applied to Leila (code GLCOMP25KQRXD080022). $92.00 in taxes/fees charged."
+        }
+      ]
     },
     {
       id: "ceb-jpn",
@@ -420,12 +439,12 @@ const TRIP_DATA = {
       blurb: "Trade winter coats for swimsuits — travel day to the Philippines." },
 
     { phase: "cebu", date: "Fri, Jan 8", emoji: "✈️", type: "flight", ref: "jpn-ceb",
-      title: "Fly Japan → Cebu",
-      blurb: "STILL NEEDS BOOKING — this is the flight that makes beach week happen." },
+      title: "Fly Narita → Cebu (via Manila)",
+      blurb: "Booked! PR429 + PR2845 via Philippine Airlines, one stop in Manila with a 3-hour layover. Depart 9:35 PM Jan 8, land in Cebu 6:25 AM Jan 9." },
 
     { phase: "cebu", date: "Fri, Jan 8", emoji: "🏝️", type: "hotel-in", ref: "cebu-hotel",
       title: "Check in: Dusit Thani Mactan Cebu",
-      blurb: "6 nights of sea-view island time. 85°F and sunny, probably." },
+      blurb: "6 nights of sea-view island time. 85°F and sunny, probably. Heads up: the flight doesn't land until 6:25 AM Sat Jan 9 — confirm the late arrival with the hotel (see To-Do)." },
 
     { phase: "finaljapan", date: "Thu, Jan 14", emoji: "🧳", type: "hotel-out", ref: "cebu-hotel",
       title: "Check out of Cebu (12 PM)",
@@ -465,22 +484,22 @@ const TRIP_DATA = {
       detail: "Confirmed: the one booking (Trip #1020477405 / conf 78076207) covers all 4 of you. The \"2 guests\" shown in Chase was just a display quirk."
     },
     {
-      done: false,
+      done: true,
       priority: "high",
-      title: "Book flight: Japan → Cebu (Fri, Jan 8) — Atmos + Global Companion Award",
-      detail: "Yokohama checkout and Cebu check-in are both Jan 8 — this flight is the hinge of the whole trip. Award strategy: book via Alaska Atmos Rewards at 25K pp economy, and apply Christina's 25K Global Companion Award to make one passenger free — 75K Atmos total for all 4 (25K + 0K + 25K + 25K) instead of 100K. Don't transfer Bilt → Atmos until the 80K Summit SUB and this companion certificate actually post and NRT→CEB 25K space is reconfirmed directly with Atmos (partner award space is capacity-controlled — treat seats.aero as a lead, not guaranteed inventory)."
+      title: "Book flight: Japan → Cebu (Fri, Jan 8)",
+      detail: "Booked — but NOT nonstop and NOT landing Jan 8: PR429 NRT→MNL (9:35 PM–2:00 AM), a 3-hour Manila layover, then PR2845 MNL→CEB (5:00 AM–6:25 AM), landing Sat Jan 9. Booked as two separate reservations so each parent's Atmos account could apply its own 25K Global Companion Award: Joshua's account covered Joshua + Lucas (Alaska conf GCQIGQ / PA conf CNZV7C), Christina's covered herself + Leila (Alaska conf SNLNQQ / PA conf CO3R6W) — 50K Atmos + both companion certs used, $92 taxes/fees per reservation. IMPORTANT: the Dusit Thani check-in on file is Jan 8, 3:00 PM, but you won't land in Cebu until 6:25 AM Jan 9 — call the hotel to confirm the late arrival is fine and you're not charged a no-show for the night of the 8th."
     },
     {
       done: true,
       priority: "high",
       title: "Book flight: Cebu → Japan (Thu, Jan 14)",
-      detail: "Booked via Bilt (PR410, Philippine Airlines, nonstop CEB→KIX, 8:25 AM–1:35 PM, conf CH4YSU, 74,208 points, $0 billed) — went a different route than the planned Atmos + Global Companion Award strategy, so that second companion certificate is still available for a future flight. Lands at Osaka (KIX), not Tokyo — factor that into the Jan 14–17 lodging pick."
+      detail: "Booked via Bilt (PR410, Philippine Airlines, nonstop CEB→KIX, 8:25 AM–1:35 PM, conf CH4YSU, 74,208 points, $0 billed) — went a different route than the Atmos + Global Companion Award strategy used for the outbound Cebu flight. Lands at Osaka (KIX), not Tokyo — factor that into the Jan 14–17 lodging pick."
     },
     {
-      done: false,
+      done: true,
       priority: "medium",
-      title: "Hold off on Bilt → Atmos point transfers",
-      detail: "CEB→KIX ended up booked with Bilt points directly, so only the NRT→CEB leg still needs the Atmos + Global Companion Award play (75K Atmos for 4). Funding picture once the Summit bonus posts: ~86K native Atmos (existing balances + 80K SUB), plenty for that one 75K award without touching Bilt. Don't transfer anything yet — wait for the 80K Summit bonus and Christina's Global Companion Award to post, reconfirm NRT→CEB 25K Atmos award space is still bookable, then transfer only if the native balance falls short. This leaves Bilt plus the full 100K Chase UR bonus free for ATL→SEA or future travel — including the now-unused second companion certificate."
+      title: "Bilt → Atmos point transfers — no longer needed",
+      detail: "Both Asia flights are booked. NRT→CEB used 50K in native Atmos points (25K per parent's account) plus both parents' Global Companion Awards; CEB→KIX was booked separately with Bilt points. No Bilt→Atmos transfer was needed after all — Bilt points and the full 100K Chase UR bonus remain free for future travel."
     },
     {
       done: true,
@@ -506,7 +525,7 @@ const TRIP_DATA = {
      GOOD TO KNOW — stable reference facts for the quick-reference section.
      ========================================================================== */
   goodToKnow: [
-    { emoji: "💳", title: "Asia flights: award strategy", detail: "CEB→KIX is booked (Bilt points, PR410). NRT→CEB is still open: book Atmos economy (25K pp) and apply Christina's 25K Global Companion Award — 75K for all 4 instead of 100K. Skip business (50K pp; 175K even with a cert). Fund any Atmos shortfall from Bilt (1:1) only after the Summit bonus posts and space is reconfirmed. Keep ATL→SEA off Atmos — compare cash, Delta SkyMiles, and Flying Blue once the 100K Chase bonus lands. See To-Do for the step-by-step." },
+    { emoji: "💳", title: "Asia flights: award strategy", detail: "Both Asia flights are booked. NRT→CEB (Jan 8–9, via Manila): 50K Atmos points across Joshua's and Christina's accounts, plus both parents' 25K Global Companion Awards applied to Lucas and Leila. CEB→KIX (Jan 14): booked with Bilt points instead (PR410). ATL→SEA was booked with cash on Delta (DL714), kept off Atmos as planned." },
     { emoji: "🕐", title: "Time zones", detail: "Japan is 14 hrs ahead of Atlanta (UTC+9 vs UTC−5). Cebu is 13 hrs ahead (UTC+8) — 1 hr behind Japan." },
     { emoji: "💴", title: "Money", detail: "Japan: yen (¥) — cash still matters at small spots. Philippines: peso (₱). Cards fine at the resort." },
     { emoji: "🔌", title: "Plugs & power", detail: "Japan: Type A (US-style 2-prong), 100V — US plugs fit. Philippines: 220V, Type A/B/C — check chargers for '100–240V'." },
