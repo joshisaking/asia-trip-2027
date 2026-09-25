@@ -404,6 +404,9 @@ section.wrap { padding-top: 54px; scroll-margin-top: 64px; }
 .res-via { font-size: 0.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.7px; color: var(--muted); margin: 0; }
 .map-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 900; color: var(--ph-karuizawa); text-decoration: none; margin-top: 8px; }
 .map-link:hover { text-decoration: underline; }
+.phone-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 900; color: var(--ph-karuizawa); text-decoration: none; margin-top: 8px; margin-left: 14px; }
+.phone-link:hover { text-decoration: underline; }
+.fact .phone-link { margin: 0; font-size: inherit; font-weight: 800; }
 
 /* ---------------- todo ---------------- */
 .todo-item {

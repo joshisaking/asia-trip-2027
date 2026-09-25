@@ -253,6 +253,7 @@ const TRIP_DATA = {
       name: "W Seattle",
       brand: "W Hotels · booked via Chase Travel \"The Edit\"",
       address: "1112 4th Ave, Seattle, WA 98101",
+      phone: { display: "+1 206-264-6000", tel: "+12062646000" },
       checkIn:  { date: "Mon, Dec 28, 2026", time: "4:00 PM" },
       checkOut: { date: "Wed, Dec 30, 2026", time: "12:00 PM" },
       nights: 2,
@@ -272,6 +273,7 @@ const TRIP_DATA = {
       name: "ANA Holiday Inn Resort Karuizawa",
       brand: "IHG",
       address: "2023-16 Kitakaruizawa Agatsumagun, Gunma, Kitasaku Gun, Japan 377-1412",
+      phone: { display: "+81 279-84-1441", tel: "+81279841441" },
       checkIn:  { date: "Thu, Dec 31, 2026", time: "3:00 PM" },
       checkOut: { date: "Mon, Jan 4, 2027",  time: "11:00 AM" },
       nights: 4,
@@ -291,6 +293,7 @@ const TRIP_DATA = {
       name: "Hyatt Regency Yokohama",
       brand: "Hyatt",
       address: "280-2 Yamashita-cho, Naka-ku, Yokohama 231-8340, Japan",
+      phone: { display: "+81 45-222-0100", tel: "+81452220100" },
       checkIn:  { date: "Mon, Jan 4, 2027", time: "3:00 PM (standard)" },
       checkOut: { date: "Fri, Jan 8, 2027", time: "11:00 AM (standard)" },
       nights: 4,
@@ -309,6 +312,7 @@ const TRIP_DATA = {
       name: "Dusit Thani Mactan Cebu Resort",
       brand: "Dusit",
       address: "Punta Engano Road, Lapu-Lapu, Cebu, Philippines 6015",
+      phone: { display: "+63 32-888-1388", tel: "+63328881388" },
       checkIn:  { date: "Fri, Jan 8, 2027",  time: "3:00 PM" },
       checkOut: { date: "Thu, Jan 14, 2027", time: "12:00 PM" },
       nights: 6,
@@ -330,6 +334,7 @@ const TRIP_DATA = {
       name: "Mercure Kyoto Station",
       brand: "Accor / ALL",
       address: "288 Aburanokojicho, Shimogyo-ku, 600-8231 Kyoto, Japan",
+      phone: { display: "+81 75-343-5533", tel: "+81753435533" },
       checkIn:  { date: "Thu, Jan 14, 2027", time: "2:00 PM" },
       checkOut: { date: "Sat, Jan 16, 2027", time: "11:00 AM" },
       nights: 2,
@@ -350,6 +355,7 @@ const TRIP_DATA = {
       name: "Hotel JAL City Haneda Tokyo (WEST WING)",
       brand: "Okura / Nikko Hotels",
       address: "4-4 Haneda Asahicho, Ota-ku, Tokyo 144-0042, Japan",
+      phone: { display: "+81 3-5735-2525", tel: "+81357352525" },
       checkIn:  { date: "Sat, Jan 16, 2027", time: "—" },
       checkOut: { date: "Sun, Jan 17, 2027", time: "—" },
       nights: 1,
@@ -360,7 +366,7 @@ const TRIP_DATA = {
         { label: "Itinerary #", value: "9542B4906156" }
       ],
       price: "¥32,448 total, taxes/fees included",
-      note: "Replaces the earlier Mercure Haneda booking (wrong dates), which was cancelled. This one has the correct dates — closes the final lodging gap before the Jan 17 flight home. Hotel phone: 81-3-57352525."
+      note: "Replaces the earlier Mercure Haneda booking (wrong dates), which was cancelled. This one has the correct dates — closes the final lodging gap before the Jan 17 flight home."
     }
   ],
 
