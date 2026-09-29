@@ -1,0 +1,21 @@
+{
+  "model": "sonnet",
+  "extraKnownMarketplaces": {
+    "josh-kit": {
+      "source": {
+        "source": "github",
+        "repo": "joshisaking/claude-kit"
+      }
+    },
+    "typesafe-ai": {
+      "source": {
+        "source": "github",
+        "repo": "typesafe-ai/skills"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "jev@josh-kit": true,
+    "typesafe@typesafe-ai": true
+  }
+}
