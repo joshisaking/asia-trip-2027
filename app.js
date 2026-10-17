@@ -309,6 +309,7 @@
           <div class="fact"><span class="fl">Check-in</span><span><b>${esc(h.checkIn.date)}</b> · ${esc(h.checkIn.time)}</span></div>
           <div class="fact"><span class="fl">Stay</span><span>${nightsLabel(h.nights)} · ${esc(h.room)}</span></div>
           <div class="fact"><span class="fl">Address</span><span>${esc(h.address)}</span></div>
+          ${h.phone ? `<div class="fact"><span class="fl">Phone</span><span>${phoneLink(h.phone)}</span></div>` : ""}
         </div>
         ${codeChips(h.codes)}
         ${mapsLink(h.address)}
