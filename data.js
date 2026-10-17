@@ -310,7 +310,8 @@ const TRIP_DATA = {
       emoji: "🌃",
       name: "Hotel Livemax Chiba-ekimae",
       brand: "Booked via Chase Travel",
-      address: "Chiba City, Chiba Prefecture, Chiba 260-0031, Japan",
+      address: "2-3-2 Shin-Chiba, Chuo-ku, Chiba 260-0031, Japan",
+      phone: { display: "+81 43-241-1500", tel: "+81432411500" },
       checkIn:  { date: "Thu, Dec 31, 2026", time: "3:00 PM" },
       checkOut: { date: "Fri, Jan 1, 2027",  time: "10:00 AM" },
       nights: 1,
@@ -322,7 +323,7 @@ const TRIP_DATA = {
       ],
       price: "$229.81 total (7,421 pts + $155.60 on card)",
       cancellation: "Free cancellation until Wed, Dec 30, 2026, 12:00 AM (property time)",
-      note: "New Year's Eve landing pad — NRT arrival is 3:05 PM, so you'll check in this evening. Bring government photo ID matching the reservation; the hotel will also take a card for incidentals. The room is a twin with 2 single beds for 4 guests — contact the hotel directly to confirm bedding/occupancy (special requests go to the hotel, not Chase)."
+      note: "New Year's Eve landing pad — NRT arrival is 3:05 PM, so you'll check in this evening. Bring government photo ID matching the reservation; the hotel will also take a card for incidentals. The room is a twin with 2 single beds for 4 guests — contact the hotel directly to confirm bedding/occupancy (special requests go to the hotel, not Chase). Heads-up: Livemax runs several similarly named hotels in Chiba (Chuo-Ekimae, Chiba Minato-Ekimae, Soga-Ekimae) — this booking is the Chiba-Ekimae one, postal code 260-0031, right by JR Chiba Station's west exit."
     },
     {
       id: "karuizawa-hotel",
@@ -586,6 +587,11 @@ const TRIP_DATA = {
      GOOD TO KNOW — stable reference facts for the quick-reference section.
      ========================================================================== */
   goodToKnow: [
+    { emoji: "☎️", title: "Chase Travel support", detail: "Dedicated line for any question or problem with a Chase Travel booking (W Seattle, Hotel Livemax Chiba-ekimae). Have the Trip ID ready: Chiba 1030943442 · W Seattle 1020477405. Calls from abroad may incur charges — use the international number or an app/eSIM data plan.",
+      phones: [
+        { label: "US / toll-free", display: "1-866-331-0773", tel: "+18663310773" },
+        { label: "International", display: "+1-206-274-6380", tel: "+12062746380" }
+      ] },
     { emoji: "💳", title: "Asia flights: award strategy", detail: "Both Asia flights are booked. NRT→CEB (Jan 8–9, via Manila): 50K Atmos points across Joshua's and Christina's accounts, plus both parents' 25K Global Companion Awards applied to Lucas and Leila. CEB→KIX (Jan 14): booked with Bilt points instead (PR410). ATL→SEA was booked with cash on Delta (DL714), kept off Atmos as planned." },
     { emoji: "🕐", title: "Time zones", detail: "Japan is 14 hrs ahead of Atlanta (UTC+9 vs UTC−5). Cebu is 13 hrs ahead (UTC+8) — 1 hr behind Japan." },
     { emoji: "💴", title: "Money", detail: "Japan: yen (¥) — cash still matters at small spots. Philippines: peso (₱). Cards fine at the resort." },
