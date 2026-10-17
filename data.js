@@ -310,7 +310,8 @@ const TRIP_DATA = {
       emoji: "🌃",
       name: "Hotel Livemax Chiba-ekimae",
       brand: "Booked via Chase Travel",
-      address: "Chiba City, Chiba Prefecture, Chiba 260-0031, Japan",
+      address: "2-3-2 Shin-Chiba, Chuo-ku, Chiba 260-0031, Japan",
+      phone: { display: "+81 43-241-1500", tel: "+81432411500" },
       checkIn:  { date: "Thu, Dec 31, 2026", time: "3:00 PM" },
       checkOut: { date: "Fri, Jan 1, 2027",  time: "10:00 AM" },
       nights: 1,
@@ -322,7 +323,7 @@ const TRIP_DATA = {
       ],
       price: "$229.81 total (7,421 pts + $155.60 on card)",
       cancellation: "Free cancellation until Wed, Dec 30, 2026, 12:00 AM (property time)",
-      note: "New Year's Eve landing pad — NRT arrival is 3:05 PM, so you'll check in this evening. Bring government photo ID matching the reservation; the hotel will also take a card for incidentals. The room is a twin with 2 single beds for 4 guests — contact the hotel directly to confirm bedding/occupancy (special requests go to the hotel, not Chase)."
+      note: "New Year's Eve landing pad — NRT arrival is 3:05 PM, so you'll check in this evening. Bring government photo ID matching the reservation; the hotel will also take a card for incidentals. The room is a twin with 2 single beds for 4 guests — contact the hotel directly to confirm bedding/occupancy (special requests go to the hotel, not Chase). Heads-up: Livemax runs several similarly named hotels in Chiba (Chuo-Ekimae, Chiba Minato-Ekimae, Soga-Ekimae) — this booking is the Chiba-Ekimae one, postal code 260-0031, right by JR Chiba Station's west exit."
     },
     {
       id: "karuizawa-hotel",
