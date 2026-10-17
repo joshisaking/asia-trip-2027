@@ -43,6 +43,9 @@
       ? ""
       : `<a class="map-link" href="https://maps.google.com/?q=${encodeURIComponent(address)}" target="_blank" rel="noopener">📍 Open in Google Maps</a>`;
 
+  const phoneLink = (phone) =>
+    phone ? `<a class="phone-link" href="tel:${esc(phone.tel)}">📞 ${esc(phone.display)}</a>` : "";
+
   /* ---------------- theme ---------------- */
   function initTheme() {
     const saved = localStorage.getItem("trip-theme");
@@ -432,6 +435,7 @@
           ${h.price ? `<div class="fact"><span class="fl">Price</span><span>${esc(h.price)}</span></div>` : ""}
           ${h.cancellation ? `<div class="fact"><span class="fl">Cancel by</span><span>${esc(h.cancellation)}</span></div>` : ""}
           <div class="fact"><span class="fl">Address</span><span>${esc(h.address)}</span></div>
+          ${h.phone ? `<div class="fact"><span class="fl">Phone</span><span>${phoneLink(h.phone)}</span></div>` : ""}
         </div>
         ${codeChips(h.codes)}
         ${mapsLink(h.address)}
@@ -474,7 +478,8 @@
       { kind: "flight", id: "jpn-ceb" },
       { kind: "hotel", id: "cebu-hotel" },
       { kind: "flight", id: "ceb-jpn" },
-      { kind: "hotel", id: "japan-final" },
+      { kind: "hotel", id: "kyoto-hotel" },
+      { kind: "hotel", id: "haneda-hotel" },
       { kind: "flight", id: "hnd-atl" },
     ];
 
@@ -496,6 +501,7 @@
         const h = hotelById(o.id);
         const hChips = [
           ...h.codes.map((c) => copyChip(c.label, c.value)),
+          ...(h.phone ? [copyChip("Phone", h.phone.display)] : []),
           ...(/TBD/i.test(h.address) ? [] : [copyChip("Address", h.address)]),
         ];
         return `
@@ -504,6 +510,7 @@
           <p class="qr-sub">${esc(h.checkIn.date)} → ${esc(h.checkOut.date)} · ${nightsLabel(h.nights)}</p>
           ${hChips.length ? `<div class="codes">${hChips.join("")}</div>` : `<p class="qr-sub">Nothing to copy yet — this stay still needs booking.</p>`}
           ${mapsLink(h.address)}
+          ${phoneLink(h.phone)}
         </div>`;
       })
       .join("");
