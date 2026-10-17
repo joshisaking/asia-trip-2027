@@ -587,6 +587,11 @@ const TRIP_DATA = {
      GOOD TO KNOW — stable reference facts for the quick-reference section.
      ========================================================================== */
   goodToKnow: [
+    { emoji: "☎️", title: "Chase Travel support", detail: "Dedicated line for any question or problem with a Chase Travel booking (W Seattle, Hotel Livemax Chiba-ekimae). Have the Trip ID ready: Chiba 1030943442 · W Seattle 1020477405. Calls from abroad may incur charges — use the international number or an app/eSIM data plan.",
+      phones: [
+        { label: "US / toll-free", display: "1-866-331-0773", tel: "+18663310773" },
+        { label: "International", display: "+1-206-274-6380", tel: "+12062746380" }
+      ] },
     { emoji: "💳", title: "Asia flights: award strategy", detail: "Both Asia flights are booked. NRT→CEB (Jan 8–9, via Manila): 50K Atmos points across Joshua's and Christina's accounts, plus both parents' 25K Global Companion Awards applied to Lucas and Leila. CEB→KIX (Jan 14): booked with Bilt points instead (PR410). ATL→SEA was booked with cash on Delta (DL714), kept off Atmos as planned." },
     { emoji: "🕐", title: "Time zones", detail: "Japan is 14 hrs ahead of Atlanta (UTC+9 vs UTC−5). Cebu is 13 hrs ahead (UTC+8) — 1 hr behind Japan." },
     { emoji: "💴", title: "Money", detail: "Japan: yen (¥) — cash still matters at small spots. Philippines: peso (₱). Cards fine at the resort." },

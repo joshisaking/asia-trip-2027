@@ -521,6 +521,7 @@
       <div class="know reveal">
         <h3>${k.emoji} ${esc(k.title)}</h3>
         <p>${esc(k.detail)}</p>
+        ${(k.phones || []).map((ph) => `<a class="phone-link" href="tel:${esc(ph.tel)}">📞 ${esc(ph.label)}: ${esc(ph.display)}</a>`).join("")}
       </div>`
       )
       .join("");
