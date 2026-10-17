@@ -73,14 +73,24 @@ const TRIP_DATA = {
       funFact: "The flight is about 10¼ hours, but you land a calendar day later — Dec 31 mostly vanishes into the date line. Don't worry, you get the day back on the way home."
     },
     {
+      id: "chiba",
+      emoji: "🌃",
+      name: "Chiba — New Year's Eve Landing",
+      dates: "Dec 31 – Jan 1 · 1 night",
+      tagline: "One easy night near Narita before heading up to the mountains.",
+      weather: "🧥 Typically 34–50°F (1–10°C), crisp and mostly dry",
+      funFact: "Japan rings out the year with temple bells struck 108 times at midnight (joya no kane) — you may hear them drifting across the city while you ring in 2027.",
+      ideas: "Station-area dinner · New Year's Eve countdown · early night after the long flight"
+    },
+    {
       id: "karuizawa",
       emoji: "⛄",
       name: "Karuizawa — Snow & New Year",
-      dates: "Dec 31 – Jan 4 · 4 nights",
+      dates: "Jan 1 – 4 · 3 nights",
       tagline: "Mountain resort town at the foot of Mt. Asama.",
       weather: "❄️ Typically 19–36°F (−7 to 2°C) — pack real winter layers",
-      funFact: "You'll ring in the New Year the Japanese way: temple bells struck 108 times at midnight (joya no kane), and hatsumōde — the year's first shrine visit — on Jan 1.",
-      ideas: "Onsen soak · snow play · Shiraito Falls · New Year's temple bells"
+      funFact: "New Year's Day is for hatsumōde — the year's first shrine visit — and the snowy mountain air makes it feel like a postcard.",
+      ideas: "Onsen soak · snow play · Shiraito Falls · hatsumōde shrine visit"
     },
     {
       id: "yokohama",
@@ -256,8 +266,29 @@ const TRIP_DATA = {
       note: "Labeled \"Seattle Stay 1\" in Chase with 2 guests — confirm how the other half of the family is covered (see To-Do). Checkout is officially noon, but JL67 departs 11:50 AM on the 30th: be out the door by ~8 AM. (Conf shows as \"78076207-\" in the Chase app.)"
     },
     {
-      id: "karuizawa-hotel",
+      id: "chiba-hotel",
       status: "confirmed",
+      phase: "chiba",
+      emoji: "🌃",
+      name: "Hotel Livemax Chiba-ekimae",
+      brand: "Booked via Chase Travel",
+      address: "Chiba City, Chiba Prefecture, Chiba 260-0031, Japan",
+      checkIn:  { date: "Thu, Dec 31, 2026", time: "3:00 PM" },
+      checkOut: { date: "Fri, Jan 1, 2027",  time: "10:00 AM" },
+      nights: 1,
+      room: "Twin Room · Non-Smoking · 2 single beds",
+      guests: "4 guests · primary: Joshua L King",
+      codes: [
+        { label: "Stay confirmation", value: "1067261410" },
+        { label: "Chase Trip ID", value: "1030943442" }
+      ],
+      price: "$229.81 total (7,421 pts + $155.60 on card)",
+      cancellation: "Free cancellation until Wed, Dec 30, 2026, 12:00 AM (property time)",
+      note: "New Year's Eve landing pad — NRT arrival is 3:05 PM, so you'll check in this evening. Bring government photo ID matching the reservation; the hotel will also take a card for incidentals. The room is a twin with 2 single beds for 4 guests — contact the hotel directly to confirm bedding/occupancy (special requests go to the hotel, not Chase)."
+    },
+    {
+      id: "karuizawa-hotel",
+      status: "verify",
       phase: "karuizawa",
       emoji: "⛄",
       name: "ANA Holiday Inn Resort Karuizawa",
@@ -272,7 +303,7 @@ const TRIP_DATA = {
         { label: "Hotel confirmation", value: "93058402517" },
         { label: "Trip ID", value: "1016065470" }
       ],
-      note: "New Year's Eve + New Year's Day here. Landing at NRT 3:05 PM — the trek up to Kitakaruizawa is ~3–4 hrs (train + bus/taxi, or rental car), so expect an evening arrival."
+      note: "⚠️ Overlaps the new Chiba stay: this reservation still starts Dec 31 (4 nights), but the family now sleeps in Chiba that night and arrives Jan 1. Ask the hotel / IHG to move check-in to Jan 1 (3 nights) — or confirm the first night is no-show-safe — so you're not paying for an empty room. See To-Do. From Chiba, expect ~3 hrs door to door (train to Tokyo, then Hokuriku shinkansen + bus/taxi)."
     },
     {
       id: "yokohama-hotel",
@@ -352,17 +383,25 @@ const TRIP_DATA = {
       title: "Fly Seattle → Tokyo",
       blurb: "The big one. Wheels up 11:50 AM on JAL 67 — next stop, Japan." },
 
-    { phase: "karuizawa", date: "Thu, Dec 31", emoji: "🛬", type: "moment",
+    { phase: "chiba", date: "Thu, Dec 31", emoji: "🛬", type: "moment",
       title: "Land at Narita, 3:05 PM — New Year's Eve!",
-      blurb: "Grab bags, clear immigration, and start the ~3–4 hr journey to the mountains (shinkansen + bus/taxi, or rental car)." },
+      blurb: "Grab bags, clear immigration, and hop a train into Chiba City — an easy hour instead of the long haul to the mountains tonight." },
 
-    { phase: "karuizawa", date: "Thu, Dec 31", emoji: "⛄", type: "hotel-in", ref: "karuizawa-hotel",
-      title: "Check in: ANA Holiday Inn Resort Karuizawa",
-      blurb: "Home for the next 4 nights. Ring in 2027 with temple bells in the snow." },
+    { phase: "chiba", date: "Thu, Dec 31", emoji: "🌃", type: "hotel-in", ref: "chiba-hotel",
+      title: "Check in: Hotel Livemax Chiba-ekimae",
+      blurb: "One night by the station. Dinner, a New Year's Eve countdown, and a good night's sleep after the long flight." },
+
+    { phase: "karuizawa", date: "Fri, Jan 1", emoji: "🚄", type: "hotel-out", ref: "chiba-hotel",
+      title: "Check out (10 AM) → train to Karuizawa",
+      blurb: "Happy New Year! Head up to the mountains — roughly 3 hrs by train, shinkansen and bus/taxi." },
 
     { phase: "karuizawa", date: "Fri, Jan 1", emoji: "🎍", type: "moment",
       title: "New Year's Day in Japan",
       blurb: "Hatsumōde (first shrine visit), osechi treats, maybe the year's first onsen. 明けましておめでとう!" },
+
+    { phase: "karuizawa", date: "Fri, Jan 1", emoji: "⛄", type: "hotel-in", ref: "karuizawa-hotel",
+      title: "Check in: ANA Holiday Inn Resort Karuizawa",
+      blurb: "Home for the next 3 nights. NOTE: the reservation still starts Dec 31 — ask the hotel to shift check-in to today (see To-Do)." },
 
     { phase: "yokohama", date: "Mon, Jan 4", emoji: "🚄", type: "hotel-out", ref: "karuizawa-hotel",
       title: "Check out (11 AM) → train to Yokohama",
@@ -410,6 +449,18 @@ const TRIP_DATA = {
       priority: "high",
       title: "Book flight: Atlanta → Seattle (Mon, Dec 28)",
       detail: "The W Seattle is now booked for Dec 28–30 (check-in 4:00 PM), so book the flight to land Monday afternoon/evening. JL67 departs SEA at 11:50 AM on the 30th. Award strategy: keep this OFF Atmos — Delta (34.6K pp/138.4K for 4) and Atmos (37.5K pp/150K for 4) are both weak redemptions for a domestic positioning flight, and the two Global Companion Awards are worth far more spent on the Asia legs below. Once the 100K Chase UR bonus posts, compare (1) cash price for 4, (2) Chase Travel cash-equivalent pricing, (3) Delta/Alaska partner award space, and (4) Delta availability via Flying Blue (Chase and Bilt both transfer 1:1) — book whichever is cheapest. Leave the 100K Chase UR as UR; don't convert it just to cover this flight."
+    },
+    {
+      done: false,
+      priority: "high",
+      title: "Fix the Karuizawa / Chiba overlap on Dec 31",
+      detail: "ANA Holiday Inn Resort Karuizawa (conf 93058402517) is booked Dec 31 – Jan 4, but the family now sleeps at Hotel Livemax Chiba-ekimae on Dec 31 and heads to Karuizawa on Jan 1. Contact IHG / the hotel to move check-in to Jan 1 (3 nights) — or decide to keep the first night. Check the rate's change/cancel terms before you call."
+    },
+    {
+      done: false,
+      priority: "medium",
+      title: "Confirm Chiba room fits all 4 (Hotel Livemax)",
+      detail: "Booked as a Twin Room with 2 single beds for 4 guests (stay conf 1067261410, Chase Trip 1030943442). Contact the hotel directly about bedding/occupancy — Chase relays only the booking, and the hotel may not get your names until 48 hours before check-in. Free cancellation until Dec 30, 12:00 AM property time."
     },
     {
       done: false,

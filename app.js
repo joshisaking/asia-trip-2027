@@ -25,6 +25,7 @@
 
   const flightById = (id) => D.flights.find((f) => f.id === id);
   const hotelById = (id) => D.hotels.find((h) => h.id === id);
+  const nightsLabel = (n) => `${n} night${n === 1 ? "" : "s"}`;
 
   const copyChip = (label, value) =>
     `<button class="copy" type="button" data-value="${esc(value)}" title="Tap to copy">
@@ -136,7 +137,7 @@
 
   /* ---------------- route map ----------------
      Atlanta is home, so the trip is a full loop: ATL → SEA → NRT →
-     Karuizawa → Yokohama → Cebu → HND → ATL. Renders a wide serpentine
+     Chiba → Karuizawa → Yokohama → Cebu → HND → ATL. Renders a wide serpentine
      on tablet/desktop and a swipe-free vertical "subway map" on phones,
      picked (and re-picked live via mapMQ) by viewport width. */
   function renderRouteMap() {
@@ -149,8 +150,8 @@
     const journey = [
       { emoji: "🧳", name: "Atlanta", sub: "Home · Dec 28", target: "ch-prelude" },
       { emoji: "🌲", name: "Seattle", sub: "Dec 28 – 30", target: "ch-prelude" },
-      { emoji: "⛩️", name: "Tokyo · Narita", sub: "Dec 31", target: "ch-karuizawa" },
-      { emoji: "⛄", name: "Karuizawa", sub: "Dec 31 – Jan 4", target: "ch-karuizawa" },
+      { emoji: "🌃", name: "Chiba · Narita", sub: "Dec 31 – Jan 1", target: "ch-chiba" },
+      { emoji: "⛄", name: "Karuizawa", sub: "Jan 1 – 4", target: "ch-karuizawa" },
       { emoji: "🎡", name: "Yokohama", sub: "Jan 4 – 8", target: "ch-yokohama" },
       { emoji: "🏝️", name: "Cebu", sub: "Jan 8 – 14", target: "ch-cebu" },
       { emoji: "🗼", name: "Tokyo · Haneda", sub: "Jan 14 – 17", target: "ch-finaljapan" },
@@ -303,7 +304,7 @@
       <div class="event-details">
         <div class="fact-rows">
           <div class="fact"><span class="fl">Check-in</span><span><b>${esc(h.checkIn.date)}</b> · ${esc(h.checkIn.time)}</span></div>
-          <div class="fact"><span class="fl">Stay</span><span>${h.nights} nights · ${esc(h.room)}</span></div>
+          <div class="fact"><span class="fl">Stay</span><span>${nightsLabel(h.nights)} · ${esc(h.room)}</span></div>
           <div class="fact"><span class="fl">Address</span><span>${esc(h.address)}</span></div>
         </div>
         ${codeChips(h.codes)}
@@ -420,7 +421,7 @@
           <div class="tcard-emoji">${h.emoji}</div>
           <div>
             <h3 class="tcard-title">${esc(h.name)}</h3>
-            <p class="tcard-sub">${esc(h.brand ? h.brand + " · " : "")}${h.nights} nights · ${esc(h.guests)}</p>
+            <p class="tcard-sub">${esc(h.brand ? h.brand + " · " : "")}${nightsLabel(h.nights)} · ${esc(h.guests)}</p>
           </div>
           ${badge(h.status)}
         </div>
@@ -467,6 +468,7 @@
       { kind: "flight", id: "atl-sea" },
       { kind: "hotel", id: "seattle-w" },
       { kind: "flight", id: "sea-nrt" },
+      { kind: "hotel", id: "chiba-hotel" },
       { kind: "hotel", id: "karuizawa-hotel" },
       { kind: "hotel", id: "yokohama-hotel" },
       { kind: "flight", id: "jpn-ceb" },
@@ -499,7 +501,7 @@
         return `
         <div class="qr-group reveal">
           <div class="qr-head"><h3 class="qr-title">${h.emoji} ${esc(h.name)}</h3>${badge(h.status)}</div>
-          <p class="qr-sub">${esc(h.checkIn.date)} → ${esc(h.checkOut.date)} · ${h.nights} nights</p>
+          <p class="qr-sub">${esc(h.checkIn.date)} → ${esc(h.checkOut.date)} · ${nightsLabel(h.nights)}</p>
           ${hChips.length ? `<div class="codes">${hChips.join("")}</div>` : `<p class="qr-sub">Nothing to copy yet — this stay still needs booking.</p>`}
           ${mapsLink(h.address)}
         </div>`;
