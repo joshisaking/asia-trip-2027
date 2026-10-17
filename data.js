@@ -303,7 +303,7 @@ const TRIP_DATA = {
         { label: "Hotel confirmation", value: "93058402517" },
         { label: "Trip ID", value: "1016065470" }
       ],
-      note: "⚠️ Overlaps the new Chiba stay: this reservation still starts Dec 31 (4 nights), but the family now sleeps in Chiba that night and arrives Jan 1. Ask the hotel / IHG to move check-in to Jan 1 (3 nights) — or confirm the first night is no-show-safe — so you're not paying for an empty room. See To-Do. From Chiba, expect ~3 hrs door to door (train to Tokyo, then Hokuriku shinkansen + bus/taxi)."
+      note: "⚠️ Overlaps the new Chiba stay: this reservation still starts Dec 31 (4 nights), but the family now sleeps in Chiba that night and arrives Jan 1. We're notifying the hotel and asking to remove the first night with a refund; until that's confirmed, the Dec 31 night stays on the booking. See To-Do. From Chiba, expect ~3 hrs door to door (train to Tokyo, then Hokuriku shinkansen + bus/taxi)."
     },
     {
       id: "yokohama-hotel",
@@ -401,7 +401,7 @@ const TRIP_DATA = {
 
     { phase: "karuizawa", date: "Fri, Jan 1", emoji: "⛄", type: "hotel-in", ref: "karuizawa-hotel",
       title: "Check in: ANA Holiday Inn Resort Karuizawa",
-      blurb: "Home for the next 3 nights. NOTE: the reservation still starts Dec 31 — ask the hotel to shift check-in to today (see To-Do)." },
+      blurb: "Home for the next 3 nights. NOTE: the reservation still starts Dec 31 — the hotel has been notified and we're requesting removal and refund of the first night (see To-Do)." },
 
     { phase: "yokohama", date: "Mon, Jan 4", emoji: "🚄", type: "hotel-out", ref: "karuizawa-hotel",
       title: "Check out (11 AM) → train to Yokohama",
@@ -453,8 +453,8 @@ const TRIP_DATA = {
     {
       done: false,
       priority: "high",
-      title: "Fix the Karuizawa / Chiba overlap on Dec 31",
-      detail: "ANA Holiday Inn Resort Karuizawa (conf 93058402517) is booked Dec 31 – Jan 4, but the family now sleeps at Hotel Livemax Chiba-ekimae on Dec 31 and heads to Karuizawa on Jan 1. Contact IHG / the hotel to move check-in to Jan 1 (3 nights) — or decide to keep the first night. Check the rate's change/cancel terms before you call."
+      title: "Get Karuizawa night 1 (Dec 31) removed and refunded",
+      detail: "ANA Holiday Inn Resort Karuizawa (conf 93058402517) is booked Dec 31 – Jan 4, but the family sleeps at Hotel Livemax Chiba-ekimae on Dec 31 and arrives in Karuizawa Jan 1. For now the overlap stays on the booking while we notify the hotel and request removal of the first night with a refund. Follow up until the reservation shows Jan 1 – Jan 4 (3 nights) and the refund is confirmed in writing; then update the Karuizawa stay here and clear the VERIFY badge."
     },
     {
       done: false,
